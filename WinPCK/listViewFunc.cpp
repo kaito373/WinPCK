@@ -1,10 +1,10 @@
-//////////////////////////////////////////////////////////////////////
-// listViewFunc.cpp: WinPCK ½çÃæÏß³ÌListView²¿·Ö
-// ListView¿Ø¼þÏà¹Ø²Ù×÷
+ï»¿//////////////////////////////////////////////////////////////////////
+// listViewFunc.cpp: WinPCK ç•Œé¢çº¿ç¨‹ListViewéƒ¨åˆ†
+// ListViewæŽ§ä»¶ç›¸å…³æ“ä½œ
 //
-// ´Ë³ÌÐòÓÉ ÀîÇï·ã/stsm/liqf ±àÐ´
+// æ­¤ç¨‹åºç”± æŽç§‹æž«/stsm/liqf ç¼–å†™
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄÐÞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßÐÅÏ¢
+// æ­¤ä»£ç é¢„è®¡å°†ä¼šå¼€æºï¼Œä»»ä½•åŸºäºŽæ­¤ä»£ç çš„ä¿®æ”¹å‘å¸ƒè¯·ä¿ç•™åŽŸä½œè€…ä¿¡æ¯
 // 
 // 2019.12.25
 //////////////////////////////////////////////////////////////////////
@@ -156,7 +156,7 @@ BOOL TInstDlg::EvNotifyListView(const NMHDR *pNmHdr)
 
 void TInstDlg::ListView_Init()
 {
-	//const LPTSTR	lpszID_LIST[] =	{TEXT("ÎÄ¼þÃû"), TEXT("Êµ±ê´óÐ¡"), TEXT("Ñ¹Ëõ´óÐ¡"), TEXT("Ñ¹ËõÂÊ")/*, TEXT("Î´Öª2")*/};
+	//const LPTSTR	lpszID_LIST[] =	{TEXT("æ–‡ä»¶å"), TEXT("å®žæ ‡å¤§å°"), TEXT("åŽ‹ç¼©å¤§å°"), TEXT("åŽ‹ç¼©çŽ‡")/*, TEXT("æœªçŸ¥2")*/};
 	const LPTSTR	lpszID_LIST[] = { 
 		GetLoadStr(IDS_STRING_LISTHEAD1), 
 		GetLoadStr(IDS_STRING_LISTHEAD2), 
@@ -167,7 +167,7 @@ void TInstDlg::ListView_Init()
 	InitListView(GetDlgItem(IDC_LIST), lpszID_LIST, iID_LIST_cx, ifmt);
 
 #ifdef _USE_CUSTOMDRAW_
-	//ListViewËùÓÃµÄ»­Ë¢
+	//ListViewæ‰€ç”¨çš„ç”»åˆ·
 	const COLORREF		colorHB[] = { 
 		FILL_COLOR_GREEN,
 		FILL_COLOR_GRAY,
@@ -197,7 +197,7 @@ void TInstDlg::ListView_Init()
 		}
 	}
 
-	//ListViewËùÓÃµÄÍ¼±ê
+	//ListViewæ‰€ç”¨çš„å›¾æ ‡
 	hIconList[0] = LoadIcon(TApp::GetInstance(), MAKEINTRESOURCE(IDI_ICON_DIR));
 	hIconList[1] = LoadIcon(TApp::GetInstance(), MAKEINTRESOURCE(IDI_ICON_FILE));
 	//hIconList[2] = LoadIcon(TApp::GetInstance(), MAKEINTRESOURCE(IDI_ICON_FILE));
@@ -230,16 +230,16 @@ int CALLBACK ListViewCompareProc(LPARAM lParam1, LPARAM lParam2, LPARAM lParamSo
 	int iLastSort = dwSortStat & 0xffff;
 	int iResult;
 
-	//Èç¹ûÊÇÉÏ¼¶Ä¿Â¼(".."Ä¿Â¼)
+	//å¦‚æžœæ˜¯ä¸Šçº§ç›®å½•(".."ç›®å½•)
 	if (PCK_ENTRY_TYPE_DOTDOT == (PCK_ENTRY_TYPE_DOTDOT & (lpFileEntry1->entryType | lpFileEntry2->entryType)))
 		return 0;
 
-	//Èç¹û´æÔÚÄ¿Â¼ºÍÎÄ¼þ±È½Ï
+	//å¦‚æžœå­˜åœ¨ç›®å½•å’Œæ–‡ä»¶æ¯”è¾ƒ
 	if (PCK_ENTRY_TYPE_FOLDER == (PCK_ENTRY_TYPE_FOLDER & (lpFileEntry1->entryType ^ lpFileEntry2->entryType)))
 		return 0;
 
 	switch (iLastSort) {
-		//ÎÄ¼þÃû
+		//æ–‡ä»¶å
 	case 0:
 		iResult = wcsicmp(lpFileEntry1->szName, lpFileEntry2->szName);
 		break;
@@ -355,7 +355,7 @@ BOOL TInstDlg::ListView_EndLabelEdit(const NMLVDISPINFO* pNmHdr)
 			if(NULL != _tcschr(pNmHdr->item.pszText, *lpszInvalid)) {
 				TCHAR szPrintf[64];
 				_stprintf_s(szPrintf, 64, GetLoadStr(IDS_STRING_INVALIDFILENAME), lpszInvalid);
-				MessageBox(szPrintf, TEXT("ÌáÊ¾"), MB_OK | MB_ICONASTERISK);
+				MessageBox(szPrintf, TEXT("æç¤º"), MB_OK | MB_ICONASTERISK);
 				return FALSE;
 			}
 
@@ -368,7 +368,7 @@ BOOL TInstDlg::ListView_EndLabelEdit(const NMLVDISPINFO* pNmHdr)
 				return FALSE;
 		}
 
-		//µ÷ÓÃÐÞ¸Ä
+		//è°ƒç”¨ä¿®æ”¹
 		//pck_setMTMemoryUsed(m_PckHandle, 0);
 		_beginthread(RenamePckFile, 0, this);
 
@@ -389,16 +389,16 @@ BOOL TInstDlg::EvDrawItemListView(const DRAWITEMSTRUCT *lpDis)
 	TCHAR						szStrPrintf[MAX_PATH];
 
 	//LPPCK_PATH_NODE				lpNodeToShow = NULL;
-	/////////////////Ò»Ð©±äÁ¿µÄ³õÊ¼»¯//////////////////
+	/////////////////ä¸€äº›å˜é‡çš„åˆå§‹åŒ–//////////////////
 	//LPDRAWITEMSTRUCT lpDis = (LPDRAWITEMSTRUCT)lParam; 
-	//lpDis->CtlID;					¿Ø¼þID
-	//lpDis->CtlType;				¿Ø¼þÀàÐÍ£¬ODT_LISTVIEW;ODT_HEADER;ODT_TAB;
-	//lpDis->hDC;					¿Ø¼þHDC
-	//lpDis->hwndItem;				¿Ø¼þHWND
-	//lpDis->itemAction;			¶¯×÷ÀàÐÍ£¿£¿£¿
-	//lpDis->itemData;				DATA£¬listviewµÚ0¸ösubitemµÄ×Ö´®
-	//lpDis->itemID;				ListViewµÚ¶àÉÙÐÐµÄÊý¾Ý
-	//lpDis->itemState;				×´Ì¬£¬ODS_SELECTED£¨Ñ¡ÖÐ£©ODS_FOCUS£¨£©ODS_CHECKED£¨£©
+	//lpDis->CtlID;					æŽ§ä»¶ID
+	//lpDis->CtlType;				æŽ§ä»¶ç±»åž‹ï¼ŒODT_LISTVIEW;ODT_HEADER;ODT_TAB;
+	//lpDis->hDC;					æŽ§ä»¶HDC
+	//lpDis->hwndItem;				æŽ§ä»¶HWND
+	//lpDis->itemAction;			åŠ¨ä½œç±»åž‹ï¼Ÿï¼Ÿï¼Ÿ
+	//lpDis->itemData;				DATAï¼Œlistviewç¬¬0ä¸ªsubitemçš„å­—ä¸²
+	//lpDis->itemID;				ListViewç¬¬å¤šå°‘è¡Œçš„æ•°æ®
+	//lpDis->itemState;				çŠ¶æ€ï¼ŒODS_SELECTEDï¼ˆé€‰ä¸­ï¼‰ODS_FOCUSï¼ˆï¼‰ODS_CHECKEDï¼ˆï¼‰
 	//lpDis->rcItem;
 
 	//hWndListView = lpDis->hwndItem;
@@ -406,8 +406,8 @@ BOOL TInstDlg::EvDrawItemListView(const DRAWITEMSTRUCT *lpDis)
 	rcfillrect = lpDis->rcItem;
 	hdc = lpDis->hDC;
 
-	/////////////µÃµ½ ListView Header µÄÊýÁ¿/////////////////
-	iColumnCount = Header_GetItemCount(hWndHeader);////////////////´Ë´¦ÓÐ´ýÓÅ»¯
+	/////////////å¾—åˆ° ListView Header çš„æ•°é‡/////////////////
+	iColumnCount = Header_GetItemCount(hWndHeader);////////////////æ­¤å¤„æœ‰å¾…ä¼˜åŒ–
 
 	/////////////////////////////////////////////////////
 	if(lpDis->CtlType == ODT_LISTVIEW) {
@@ -461,7 +461,7 @@ BOOL TInstDlg::EvDrawItemListView(const DRAWITEMSTRUCT *lpDis)
 			rc = rcfillrect;
 			rc.right -= 5;
 
-			//ÐÞÕýÎ»ÖÃ
+			//ä¿®æ­£ä½ç½®
 			//if(1 == lpDis->CtlID)
 			//{
 			if(0 == item.iSubItem)
@@ -491,7 +491,7 @@ void TInstDlg::InsertList(CONST HWND hWndList, CONST INT iIndex, CONST UINT uiMa
 	va_list	ap;
 	va_start(ap, nColCount);
 
-	item.iItem = iIndex;			//´Ó0¿ªÊ¼
+	item.iItem = iIndex;			//ä»Ž0å¼€å§‹
 	item.iImage = iImage;
 	item.iSubItem = 0;
 	item.mask = LVIF_TEXT | uiMask;
@@ -504,7 +504,7 @@ void TInstDlg::InsertList(CONST HWND hWndList, CONST INT iIndex, CONST UINT uiMa
 	item.mask = LVIF_TEXT;
 
 	for(item.iSubItem = 1; item.iSubItem < nColCount; item.iSubItem++) {
-		//item.iItem = iIndex;			//´Ó0¿ªÊ¼
+		//item.iItem = iIndex;			//ä»Ž0å¼€å§‹
 		//item.iSubItem = i;
 		item.pszText = va_arg(ap, wchar_t*);
 

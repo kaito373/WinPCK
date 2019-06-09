@@ -1,4 +1,4 @@
-
+ï»¿
 #include "PreviewDlg.h"
 #include <tchar.h>
 #include "DdsTgaDecoderDefine.h"
@@ -8,7 +8,7 @@ CPriviewInDlg::CPriviewInDlg() : m_buffer(NULL), dlg(NULL) {};
 CPriviewInDlg::~CPriviewInDlg()
 {}
 
-#pragma region ÎªbufferÉêÇëÄÚ´æ
+#pragma region ä¸ºbufferç”³è¯·å†…å­˜
 BOOL CPriviewInDlg::AllocBuffer(PICFORMAT fmt, DWORD dwSize)
 {
 	if(0 != dwSize) {
@@ -31,7 +31,7 @@ BOOL CPriviewInDlg::AllocBuffer(PICFORMAT fmt, DWORD dwSize)
 #pragma endregion
 
 
-#pragma region »ñÈ¡PICFORMAT
+#pragma region è·å–PICFORMAT
 PICFORMAT CPriviewInDlg::GetPicFormatFromFilename(LPCWSTR lpszFilename)
 {
 	LPCWSTR		lpszFileExt = wcsrchr(lpszFilename, L'.');
@@ -42,7 +42,7 @@ PICFORMAT CPriviewInDlg::GetPicFormatFromFilename(LPCWSTR lpszFilename)
 		//_tcscpy_s(szExt, lpszFileExt);
 		wcsncpy(szExt, lpszFileExt, sizeof(szExt)/sizeof(wchar_t) - 1);
 
-		//×ª»¯lpszFileExtÎªĞ¡Ğ´,µ±strlen(lpszFileExt) > 6 Ê±±¨´í£¬ĞŞ¸Ä
+		//è½¬åŒ–lpszFileExtä¸ºå°å†™,å½“strlen(lpszFileExt) > 6 æ—¶æŠ¥é”™ï¼Œä¿®æ”¹
 		if(4 == wcslen(szExt)) {
 			_wcslwr_s(szExt, 6);
 
@@ -72,7 +72,7 @@ BOOL CPriviewInDlg::Show(const PCK_UNIFIED_FILE_ENTRY* const lpPckFileIndexToSho
 		if(NULL == (lpszFileTitle = wcsrchr(lpszFilename, L'/')))
 			lpszFileTitle = lpszFilename - 1;
 
-	//°ÑÇ°ÃæµÄ'\\'»ò'/'È¥µô
+	//æŠŠå‰é¢çš„'\\'æˆ–'/'å»æ‰
 	lpszFileTitle++;
 #pragma endregion
 

@@ -1,10 +1,10 @@
-//////////////////////////////////////////////////////////////////////
-// tViewDlg.cpp: WinPCK ½çÃæÏß³Ì²¿·Ö
-// ¶Ô»°¿ò´úÂë
+ï»¿//////////////////////////////////////////////////////////////////////
+// tViewDlg.cpp: WinPCK ç•Œé¢çº¿ç¨‹éƒ¨åˆ†
+// å¯¹è¯æ¡†ä»£ç 
 //
-// ´Ë³ÌĞòÓÉ ÀîÇï·ã/stsm/liqf ±àĞ´
+// æ­¤ç¨‹åºç”± æç§‹æ«/stsm/liqf ç¼–å†™
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄĞŞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßĞÅÏ¢
+// æ­¤ä»£ç é¢„è®¡å°†ä¼šå¼€æºï¼Œä»»ä½•åŸºäºæ­¤ä»£ç çš„ä¿®æ”¹å‘å¸ƒè¯·ä¿ç•™åŸä½œè€…ä¿¡æ¯
 // 
 // 2017.12.26
 //////////////////////////////////////////////////////////////////////
@@ -32,7 +32,7 @@ TViewDlg::~TViewDlg()
 
 BOOL TViewDlg::EvCreate(LPARAM lParam)
 {
-	//´°¿ÚÎÄ×Ö
+	//çª—å£æ–‡å­—
 	wchar_t szTitle[MAX_PATH];
 
 	if(0 != dwSize) {
@@ -46,26 +46,26 @@ BOOL TViewDlg::EvCreate(LPARAM lParam)
 		switch (textType = TextDataType(lpszTextShow, dwSize)) {
 
 		case TEXT_TYPE_UCS2:
-			swprintf_s(szTitle, MAX_PATH, L"ÎÄ±¾²é¿´ - %s (Unicode)", lpszFile);
+			swprintf_s(szTitle, MAX_PATH, L"æ–‡æœ¬æŸ¥çœ‹ - %s (Unicode)", lpszFile);
 			SetDlgItemTextW(IDC_RICHEDIT_VIEW, (wchar_t *)lpszTextShow);
 			break;
 
 		case TEXT_TYPE_UTF8:
-			swprintf_s(szTitle, MAX_PATH, L"ÎÄ±¾²é¿´ - %s (UTF-8)", lpszFile);
+			swprintf_s(szTitle, MAX_PATH, L"æ–‡æœ¬æŸ¥çœ‹ - %s (UTF-8)", lpszFile);
 			{
 				CU82Ucs cU82U;
 				SetDlgItemTextW(IDC_RICHEDIT_VIEW, cU82U.GetString(lpszTextShow));
 			}
 			break;
 		case TEXT_TYPE_ANSI:
-			swprintf_s(szTitle, MAX_PATH, L"ÎÄ±¾²é¿´ - %s", lpszFile);
+			swprintf_s(szTitle, MAX_PATH, L"æ–‡æœ¬æŸ¥çœ‹ - %s", lpszFile);
 			SetDlgItemTextA(IDC_RICHEDIT_VIEW, (char *)lpszTextShow);
 			break;
 		case TEXT_TYPE_RAW:
 			if (VIEW_RAW_MAX_BUFFER < dwSize)
 				dwSize = VIEW_RAW_MAX_BUFFER;
 
-			swprintf_s(szTitle, MAX_PATH, L"ÎÄ±¾²é¿´ - %s (RAW)", lpszFile);
+			swprintf_s(szTitle, MAX_PATH, L"æ–‡æœ¬æŸ¥çœ‹ - %s (RAW)", lpszFile);
 			ShowRaw((LPBYTE)lpszTextShow, dwSize);
 			break;
 		}
@@ -75,7 +75,7 @@ BOOL TViewDlg::EvCreate(LPARAM lParam)
 
 	} else {
 
-		swprintf_s(szTitle, MAX_PATH, L"ÎÄ±¾²é¿´ - %s", lpszFile);
+		swprintf_s(szTitle, MAX_PATH, L"æ–‡æœ¬æŸ¥çœ‹ - %s", lpszFile);
 	}
 
 	SetWindowTextW(szTitle);

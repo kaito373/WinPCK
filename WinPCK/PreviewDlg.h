@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "tlib.h"
 #include "resource.h"
 #include "ShowPictureWithZoom.h"
@@ -14,7 +14,7 @@ public:
 
 protected:
 
-	//½«ÒªÏÔÊ¾µÄ¶Ô»°¿ò
+	//å°†è¦æ˜¾ç¤ºçš„å¯¹è¯æ¡†
 	TDlg *	dlg;
 
 	void *	m_buffer;
@@ -60,20 +60,20 @@ class TPicDlg : public TDlg
 {
 protected:
 
-	//´°¿Ú±êÌâ
+	//çª—å£æ ‡é¢˜
 	wchar_t			m_szTitle[MAX_PATH];
 
-	//´ıÏÔÊ¾Í¼Æ¬Êı¾İºÍ´óĞ¡
+	//å¾…æ˜¾ç¤ºå›¾ç‰‡æ•°æ®å’Œå¤§å°
 	LPBYTE			*buf;
 	UINT32			dwSize;
 
-	//ÎÄ¼şÃû
+	//æ–‡ä»¶å
 	const wchar_t		*lpszFile;
 	
-	//¸ñÊ½
+	//æ ¼å¼
 	PICFORMAT		iFormat;
 
-	//¼ÇÂ¼µ±Ç°Êó±êÎ»ÖÃ
+	//è®°å½•å½“å‰é¼ æ ‡ä½ç½®
 	POINT			pointMouse;
 	BOOL			isMouseDown;
 

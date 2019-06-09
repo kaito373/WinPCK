@@ -1,10 +1,10 @@
-//////////////////////////////////////////////////////////////////////
-// mainfunc.cpp: WinPCK ½çÃæÏß³Ì²¿·Ö
-// ´ò¿ª²¢ÏÔÊ¾pckÎÄ¼ş¡¢²éÕÒÎÄ¼ş¡¢¼ÇÂ¼ä¯ÀÀÎ»ÖÃ 
+ï»¿//////////////////////////////////////////////////////////////////////
+// mainfunc.cpp: WinPCK ç•Œé¢çº¿ç¨‹éƒ¨åˆ†
+// æ‰“å¼€å¹¶æ˜¾ç¤ºpckæ–‡ä»¶ã€æŸ¥æ‰¾æ–‡ä»¶ã€è®°å½•æµè§ˆä½ç½® 
 //
-// ´Ë³ÌĞòÓÉ ÀîÇï·ã/stsm/liqf ±àĞ´
+// æ­¤ç¨‹åºç”± æç§‹æ«/stsm/liqf ç¼–å†™
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄĞŞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßĞÅÏ¢
+// æ­¤ä»£ç é¢„è®¡å°†ä¼šå¼€æºï¼Œä»»ä½•åŸºäºæ­¤ä»£ç çš„ä¿®æ”¹å‘å¸ƒè¯·ä¿ç•™åŸä½œè€…ä¿¡æ¯
 // 
 // 2012.4.10
 // 2012.10.10.OK
@@ -39,14 +39,14 @@ BOOL TInstDlg::OpenPckFile(TCHAR *lpszFileToOpen, BOOL isReOpen)
 
 		*m_FolderBrowsed = 0;
 	} else {
-		//¼ÇÂ¼Î»ÖÃ
+		//è®°å½•ä½ç½®
 		iListTopView = ListView_GetTopIndex(GetDlgItem(IDC_LIST));
 	}
 
 	if(0 != *lpszFileToOpen || OpenSingleFile(hWnd, m_Filename, TEXT_FILE_FILTER)) {
 		timer.start();
 
-		//×ª»»ÎÄ¼şÃû¸ñÊ½ 
+		//è½¬æ¢æ–‡ä»¶åæ ¼å¼ 
 		if(WINPCK_OK == pck_open(m_Filename)) {
 			timer.stop();
 			_stprintf_s(szString, 64, GetLoadStr(IDS_STRING_OPENOK), timer.getElapsedTime());
@@ -106,7 +106,7 @@ void ShowFilelistCallback(void* _in_param, int sn, const wchar_t *lpszFilename, 
 
 	}
 	else {
-		//PCK_ENTRY_TYPE_DOTDOT Ê±Ö»ÄÜÊÇÎÄ¼ş¼Ğ
+		//PCK_ENTRY_TYPE_DOTDOT æ—¶åªèƒ½æ˜¯æ–‡ä»¶å¤¹
 		pThis->InsertList(hList, sn,
 			LVIF_PARAM | LVIF_IMAGE, IMGLIST_FOLDER,
 			fileEntry, 1,
@@ -127,14 +127,14 @@ VOID TInstDlg::SearchPckFiles()
 
 	HWND	hList = GetDlgItem(IDC_LIST);
 
-	//ÏÔÊ¾²éÕÒÎÄ×Ö
+	//æ˜¾ç¤ºæŸ¥æ‰¾æ–‡å­—
 	wchar_t	szPrintf[64];
 	_stprintf_s(szPrintf, 64, GetLoadStrW(IDS_STRING_SEARCHING), m_szStrToSearch);
 	SendDlgItemMessageW(IDC_STATUS, SB_SETTEXTW, 4, (LPARAM)szPrintf);
 
 	ListView_DeleteAllItems(hList);
 
-	//Çå³ıä¯ÀÀ¼ÇÂ¼
+	//æ¸…é™¤æµè§ˆè®°å½•
 	*m_FolderBrowsed = 0;
 
 	::SendMessage(hList, WM_SETREDRAW, FALSE, 0);

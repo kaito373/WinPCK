@@ -1,10 +1,10 @@
-//////////////////////////////////////////////////////////////////////
-// globals.h: WinPCK È«¾ÖÍ·ÎÄ¼ş
-// ½çÃæÀàµÄÈ«¾ÖÍ·ÎÄ¼ş
+ï»¿//////////////////////////////////////////////////////////////////////
+// globals.h: WinPCK å…¨å±€å¤´æ–‡ä»¶
+// ç•Œé¢ç±»çš„å…¨å±€å¤´æ–‡ä»¶
 //
-// ´Ë³ÌĞòÓÉ ÀîÇï·ã/stsm/liqf ±àĞ´
+// æ­¤ç¨‹åºç”± æç§‹æ«/stsm/liqf ç¼–å†™
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄĞŞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßĞÅÏ¢
+// æ­¤ä»£ç é¢„è®¡å°†ä¼šå¼€æºï¼Œä»»ä½•åŸºäºæ­¤ä»£ç çš„ä¿®æ”¹å‘å¸ƒè¯·ä¿ç•™åŸä½œè€…ä¿¡æ¯
 // 
 // 2012.4.10
 //////////////////////////////////////////////////////////////////////
@@ -25,11 +25,11 @@ using namespace std;
 #define _USE_CUSTOMDRAW_
 
 #define	THIS_NAME			"WinPCK "
-#define	THIS_DESC			L"ÍêÃÀÊÀ½çÏµÁĞÓÎÏ·PCKÎÄ¼ş°ü×ÛºÏ²é¿´Æ÷ " 
-#define	THIS_AUTHOR			L"³ÌĞò±àĞ´: stsm/liqf/ÀîÇï·ã\r\n" \
+#define	THIS_DESC			L"å®Œç¾ä¸–ç•Œç³»åˆ—æ¸¸æˆPCKæ–‡ä»¶åŒ…ç»¼åˆæŸ¥çœ‹å™¨ " 
+#define	THIS_AUTHOR			L"ç¨‹åºç¼–å†™: stsm/liqf/æç§‹æ«\r\n" \
 							"E-Mail: stsm85@126.com "
-#define THIS_UESDLIB		L"±¾Èí¼ş¿ªÔ´£¬Ô´´úÂëµØÖ·£º\r\nhttps://github.com/stsm85\r\n\r\n" \
-							"Ê¹ÓÃ¿ªÔ´¿â£º\r\n" \
+#define THIS_UESDLIB		L"æœ¬è½¯ä»¶å¼€æºï¼Œæºä»£ç åœ°å€ï¼š\r\nhttps://github.com/stsm85\r\n\r\n" \
+							"ä½¿ç”¨å¼€æºåº“ï¼š\r\n" \
 							"VC LTL(Copyright (C) Chuyu-Team)\r\n" \
 							"libdeflate(Copyright (C) 2016 Eric Biggers)\r\n" \
 							"zlib(Copyright (C) 1995-2011 Mark Adler)\r\n" \
@@ -52,8 +52,8 @@ using namespace std;
 
 #define	TEXT_INVALID_PATHCHAR			"\\/:*?\"<>|"
 
-#define	TEXT_FILE_FILTER				TEXT(	"PCKÑ¹ËõÎÄ¼ş(*.pck;*.zup)\0*.pck;*.zup\0")	\
-										TEXT(	"ËùÓĞÎÄ¼ş\0*.*\0\0")
+#define	TEXT_FILE_FILTER				TEXT(	"PCK(*.pck;*.zup)\0*.pck;*.zup\0")	\
+										TEXT(	"Ğ’ÑĞµ\0*.*\0\0")
 
 #define IMGLIST_FOLDER	0
 #define IMGLIST_FILE	1

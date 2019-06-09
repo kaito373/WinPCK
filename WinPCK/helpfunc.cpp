@@ -1,10 +1,10 @@
-//////////////////////////////////////////////////////////////////////
-// helpfunc.cpp: WinPCK ½çÃæÏß³Ì²¿·Ö
-// ÍÏ·Å¡¢´ò¿ª±£´æÎÄ¼ş¡¢Ô¤ÀÀ
+ï»¿//////////////////////////////////////////////////////////////////////
+// helpfunc.cpp: WinPCK ç•Œé¢çº¿ç¨‹éƒ¨åˆ†
+// æ‹–æ”¾ã€æ‰“å¼€ä¿å­˜æ–‡ä»¶ã€é¢„è§ˆ
 //
-// ´Ë³ÌĞòÓÉ ÀîÇï·ã/stsm/liqf ±àĞ´
+// æ­¤ç¨‹åºç”± æç§‹æ«/stsm/liqf ç¼–å†™
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄĞŞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßĞÅÏ¢
+// æ­¤ä»£ç é¢„è®¡å°†ä¼šå¼€æºï¼Œä»»ä½•åŸºäºæ­¤ä»£ç çš„ä¿®æ”¹å‘å¸ƒè¯·ä¿ç•™åŸä½œè€…ä¿¡æ¯
 // 
 // 2012.4.10
 //////////////////////////////////////////////////////////////////////
@@ -76,7 +76,7 @@ void TInstDlg::DbClickListView(const int itemIndex)
 
 	int entry_type = lpFileEntry->entryType;
 
-	//ÁĞ±íÊÇ·ñÊÇÒÔËÑË÷×´Ì¬ÏÔÊ¾
+	//åˆ—è¡¨æ˜¯å¦æ˜¯ä»¥æœç´¢çŠ¶æ€æ˜¾ç¤º
 	if(PCK_ENTRY_TYPE_INDEX == entry_type) {
 
 		if(0 != itemIndex) {
@@ -85,12 +85,12 @@ void TInstDlg::DbClickListView(const int itemIndex)
 		}
 	}
 
-	//Ä¿Â¼ä¯ÀÀÏÂrootÄ¿Â¼ÏÂµÄ..²»¿Éµã
+	//ç›®å½•æµè§ˆä¸‹rootç›®å½•ä¸‹çš„..ä¸å¯ç‚¹
 	if ((PCK_ENTRY_TYPE_ROOT | PCK_ENTRY_TYPE_DOTDOT) == ((PCK_ENTRY_TYPE_ROOT | PCK_ENTRY_TYPE_DOTDOT) & entry_type)) {
 		return;
 	}
 
-	//±¾¼¶ÊÇ·ñÊÇÎÄ¼ş¼Ğ(NULL=ÎÄ¼ş¼Ğ)
+	//æœ¬çº§æ˜¯å¦æ˜¯æ–‡ä»¶å¤¹(NULL=æ–‡ä»¶å¤¹)
 	if (PCK_ENTRY_TYPE_FOLDER == (PCK_ENTRY_TYPE_FOLDER & entry_type)) {
 
 		ShowPckFiles(lpFileEntry);
@@ -172,7 +172,7 @@ BOOL TInstDlg::AddFiles()
 
 	if(pck_isThreadWorking())return FALSE;
 
-	if(IDCANCEL == MessageBoxW(L"È·¶¨Ìí¼ÓÎÄ¼şÂğ£¿", L"Ñ¯ÎÊ", MB_OKCANCEL | MB_ICONQUESTION | MB_DEFBUTTON2))return FALSE;
+	if(IDCANCEL == MessageBoxW(L"Ğ’Ñ‹ ÑƒĞ²ĞµÑ€ĞµĞ½Ñ‹, Ñ‡Ñ‚Ğ¾ Ñ…Ğ¾Ñ‚Ğ¸Ñ‚Ğµ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ¸Ñ‚ÑŒ Ñ„Ğ°Ğ¹Ğ»?ï¼Ÿ", L" ", MB_OKCANCEL | MB_ICONQUESTION | MB_DEFBUTTON2))return FALSE;
 
 	if(OpenFiles(hWnd, m_lpszFilePath)) {
 
@@ -231,17 +231,17 @@ void TInstDlg::AddSetupReg()
 	//DWORD	dwDataLength;
 	//m_MyFileName
 
-	//¼ì²éÊÇ·ñ´æÔÚ[HKEY_CLASSES_ROOT\pckfile]
+	//æ£€æŸ¥æ˜¯å¦å­˜åœ¨[HKEY_CLASSES_ROOT\pckfile]
 	if(ERROR_SUCCESS == (result = RegOpenKeyEx(HKEY_CLASSES_ROOT,
 		TEXT("pckfile\\shell\\open\\command"),
 		0,
 		KEY_READ,
 		&hRegKey))) {
-		//´æÔÚ
-		//1.Èç¹û³ÌĞò°üº¬patcher.exe£¬ĞÂ¼Ó
+		//å­˜åœ¨
+		//1.å¦‚æœç¨‹åºåŒ…å«patcher.exeï¼Œæ–°åŠ 
 		//result = RegQueryValueEx(hRegKey, NULL, NULL, &dwType, reinterpret_cast<LPBYTE>(szString), &dwDataLength)
-		//2.·ñÔòÌæ»»
-		//3.ĞŞ¸Ä´ò¿ª·½Ê½Ë÷Òı
+		//2.å¦åˆ™æ›¿æ¢
+		//3.ä¿®æ”¹æ‰“å¼€æ–¹å¼ç´¢å¼•
 		RegCloseKey(hRegKey);
 
 		RecurseDeleteKey(HKEY_CLASSES_ROOT, TEXT(".pck"));
@@ -255,17 +255,17 @@ void TInstDlg::AddSetupReg()
 	CreateAndSetDefaultValue(TEXT("pckfile"), TEXT("Angelica File Package"));
 	CreateAndSetDefaultValue(TEXT("pckfile\\DefaultIcon"), szStringIcon);
 	CreateAndSetDefaultValue(TEXT("pckfile\\shell"), NULL);
-	CreateAndSetDefaultValue(TEXT("pckfile\\shell\\open"), TEXT("Ê¹ÓÃ WinPCK ´ò¿ª"));
+	CreateAndSetDefaultValue(TEXT("pckfile\\shell\\open"), TEXT("ĞÑ‚ĞºÑ€Ñ‹Ñ‚ÑŒ Ñ Ğ¿Ğ¾Ğ¼Ğ¾Ñ‰ÑŒÑ WinPCK"));
 	CreateAndSetDefaultValue(TEXT("pckfile\\shell\\open\\command"), szStringExec);
 
 	CreateAndSetDefaultValue(TEXT(".zup"), TEXT("ZPWUpdatePack"));
-	CreateAndSetDefaultValue(TEXT("ZPWUpdatePack"), TEXT("ÖïÏÉ¸üĞÂ°ü"));
+	CreateAndSetDefaultValue(TEXT("ZPWUpdatePack"), TEXT("ĞŸĞ°ĞºĞµÑ‚ Ğ¾Ğ±Ğ½Ğ¾Ğ²Ğ»ĞµĞ½Ğ¸Ñ ZPW"));
 	CreateAndSetDefaultValue(TEXT("ZPWUpdatePack\\DefaultIcon"), szStringIcon);
 	CreateAndSetDefaultValue(TEXT("ZPWUpdatePack\\shell"), NULL);
-	CreateAndSetDefaultValue(TEXT("ZPWUpdatePack\\shell\\open"), TEXT("Ê¹ÓÃ WinPCK ´ò¿ª"));
+	CreateAndSetDefaultValue(TEXT("ZPWUpdatePack\\shell\\open"), TEXT("ĞÑ‚ĞºÑ€Ñ‹Ñ‚ÑŒ Ñ Ğ¿Ğ¾Ğ¼Ğ¾Ñ‰ÑŒÑ WinPCK"));
 	CreateAndSetDefaultValue(TEXT("ZPWUpdatePack\\shell\\open\\command"), szStringExec);
 
-	MessageBox(TEXT("°²×°Íê³É¡£"), TEXT("ĞÅÏ¢"), MB_OK | MB_ICONASTERISK);
+	MessageBox(TEXT("Ğ£ÑÑ‚Ğ°Ğ½Ğ¾Ğ²ĞºĞ° Ğ·Ğ°Ğ²ĞµÑ€ÑˆĞµĞ½Ğ°."), TEXT("Ğ˜Ğ½Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ†Ğ¸Ñ"), MB_OK | MB_ICONASTERISK);
 }
 
 void TInstDlg::DeleteSetupReg()
@@ -275,7 +275,7 @@ void TInstDlg::DeleteSetupReg()
 	RecurseDeleteKey(HKEY_CLASSES_ROOT, TEXT(".zup"));
 	RecurseDeleteKey(HKEY_CLASSES_ROOT, TEXT("ZPWUpdatePack"));
 
-	MessageBox(TEXT("Ğ¶ÔØÍê³É¡£"), TEXT("ĞÅÏ¢"), MB_OK | MB_ICONASTERISK);
+	MessageBox(TEXT("Ğ£Ğ´Ğ°Ğ»ĞµĞ½Ğ¸Ğµ Ğ·Ğ°Ğ²ĞµÑ€ÑˆĞµĞ½Ğ¾."), TEXT("Ğ˜Ğ½Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ†Ğ¸Ñ"), MB_OK | MB_ICONASTERISK);
 }
 
 inline void CreateAndSetDefaultValue(LPCTSTR pszValueName, LPCTSTR pszValue)
@@ -334,10 +334,10 @@ void TInstDlg::InitLogWindow()
 	SetLogListWnd(logdlg->GetListWnd());
 	SetLogMainWnd(hWnd);
 
-	//ÈÕÖ¾º¯Êı°ó¶¨
+	//æ—¥å¿—å‡½æ•°ç»‘å®š
 	log_regShowFunc(PreInsertLogToList);
 
-	//Æô¶¯ÈÕÖ¾
+	//å¯åŠ¨æ—¥å¿—
 	log_PrintA(LOG_IMAGE_INFO, THIS_MAIN_CAPTION " is started.");
 
 }
@@ -392,7 +392,7 @@ TCHAR*	TInstDlg::BuildSaveDlgFilterString()
 
 		for (int i = 0; i < nPckVersionCount; i++) {
 
-			_stprintf_s(szPrintf, TEXT("%sPCKÎÄ¼ş(*.pck)|*.pck|"), pck_getVersionNameById(i));
+			_stprintf_s(szPrintf, TEXT("%sPCK(*.pck)|*.pck|"), pck_getVersionNameById(i));
 			_tcscat_s(szSaveDlgFilterString, szPrintf);
 
 		}

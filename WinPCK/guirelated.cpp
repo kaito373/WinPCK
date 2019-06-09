@@ -1,10 +1,10 @@
-//////////////////////////////////////////////////////////////////////
-// guirelated.cpp: WinPCK ΩÁ√Êœﬂ≥Ã≤ø∑÷
-// ΩÁ√Ê≥ı ºªØ
+Ôªø//////////////////////////////////////////////////////////////////////
+// guirelated.cpp: WinPCK ÁïåÈù¢Á∫øÁ®ãÈÉ®ÂàÜ
+// ÁïåÈù¢ÂàùÂßãÂåñ
 //
-// ¥À≥Ã–Ú”… ¿Ó«Ô∑„/stsm/liqf ±‡–¥
+// Ê≠§Á®ãÂ∫èÁî± ÊùéÁßãÊû´/stsm/liqf ÁºñÂÜô
 //
-// ¥À¥˙¬Î‘§º∆Ω´ª·ø™‘¥£¨»Œ∫Œª˘”⁄¥À¥˙¬Îµƒ–ﬁ∏ƒ∑¢≤º«Î±£¡Ù‘≠◊˜’ﬂ–≈œ¢
+// Ê≠§‰ª£Á†ÅÈ¢ÑËÆ°Â∞Ü‰ºöÂºÄÊ∫êÔºå‰ªª‰ΩïÂü∫‰∫éÊ≠§‰ª£Á†ÅÁöÑ‰øÆÊîπÂèëÂ∏ÉËØ∑‰øùÁïôÂéü‰ΩúËÄÖ‰ø°ÊÅØ
 // 
 // 2012.4.10
 //////////////////////////////////////////////////////////////////////
@@ -23,23 +23,23 @@ int initArgumentException(int code);
 
 void TInstDlg::initCommctrls()
 {
-	//ListView ≥ı ºªØ
+	//ListView ÂàùÂßãÂåñ
 	ListView_Init();
 
-	//…Ë÷√Ω¯∂»Ãıµƒ∑∂Œß
+	//ËÆæÁΩÆËøõÂ∫¶Êù°ÁöÑËåÉÂõ¥
 	SendDlgItemMessage(IDC_PROGRESS, PBM_SETRANGE, (WPARAM)0, MAKELPARAM(0, 1024));
 
-	//StatusBar,Œƒº˛√˚£¨Œƒº˛ ˝£¨Œƒº˛¥Û–°£¨Ω¯∂»£¨◊¥Ã¨
+	//StatusBar,Êñá‰ª∂ÂêçÔºåÊñá‰ª∂Êï∞ÔºåÊñá‰ª∂Â§ßÂ∞èÔºåËøõÂ∫¶ÔºåÁä∂ÊÄÅ
 	//int		iStatusWidth[] = {150, 250, 320, 530, 1024};
 	int		iStatusWidth[] = { 150, 260, 350, 750, 1224 };
 	SendDlgItemMessage(IDC_STATUS, SB_SETPARTS, 5, (LPARAM)iStatusWidth);
 
 	//SetStatusBarText(0, TEXT("textures123456.pck"));
-	//SetStatusBarText(1, TEXT("¥Û–°: 9999999999"));
-	//SetStatusBarText(2, TEXT(" ˝¡ø: 9999999"));
-	//SetStatusBarText(3, TEXT("Ω¯∂»: 9999999/9999999 100.0% ª∫¥Ê:9999 MB / 9999 MB 100.0%"));
+	//SetStatusBarText(1, TEXT("Â§ßÂ∞è: 9999999999"));
+	//SetStatusBarText(2, TEXT("Êï∞Èáè: 9999999"));
+	//SetStatusBarText(3, TEXT("ËøõÂ∫¶: 9999999/9999999 100.0% ÁºìÂ≠ò:9999 MB / 9999 MB 100.0%"));
 
-	//øÏΩ›º¸
+	//Âø´Êç∑ÈîÆ
 	hAccel = LoadAccelerators(TApp::GetInstance(), MAKEINTRESOURCE(IDR_ACCELERATOR1));
 
 }
@@ -47,11 +47,11 @@ void TInstDlg::initCommctrls()
 void TInstDlg::initParams()
 {
 
-	//¥Úø™°¢πÿ±’°¢∏¥‘≠µ» ¬º˛◊¢≤·
+	//ÊâìÂºÄ„ÄÅÂÖ≥Èó≠„ÄÅÂ§çÂéüÁ≠â‰∫ã‰ª∂Ê≥®ÂÜå
 	pck_regMsgFeedback(this, MyFeedbackCallback);
 
-	*m_szStrToSearch = 0;			//≤È’“µƒŒƒ◊÷
-	bGoingToExit = FALSE;			// «∑Ò◊º±∏ÕÀ≥ˆ8
+	*m_szStrToSearch = 0;			//Êü•ÊâæÁöÑÊñáÂ≠ó
+	bGoingToExit = FALSE;			//ÊòØÂê¶ÂáÜÂ§áÈÄÄÂá∫8
 
 #ifdef _DEBUG
 	pck_setMTMaxMemory((512 * 1024 * 1024));
@@ -59,7 +59,7 @@ void TInstDlg::initParams()
 
 	m_isListviewRenaming = FALSE;
 
-	//π‚±Íº”‘ÿ
+	//ÂÖâÊ†áÂä†ËΩΩ
 	m_isSearchWindow = FALSE;
 
 	//Timer
@@ -82,7 +82,7 @@ void TInstDlg::initParams()
 void TInstDlg::initToolbar()
 {
 
-	//≥ı ºªØπ§æﬂ¿∏
+	//ÂàùÂßãÂåñÂ∑•ÂÖ∑Ê†è
 	m_imageList = ImageList_Create(32, 32, ILC_COLOR32, 1, 20);
 
 	WORD	wToolBarIDsList[] = { IDI_ICON_OPEN,
@@ -413,7 +413,7 @@ void TInstDlg::initArgument()
 {
 	__try {
 
-		//≥ı ºªØ‰Ø¿¿¬∑æ∂
+		//ÂàùÂßãÂåñÊµèËßàË∑ØÂæÑ
 
 		//memset(&m_PathDirs, 0, sizeof(m_PathDirs));
 		//*m_PathDirs.lpszDirNames = m_PathDirs.szPaths;
@@ -436,7 +436,7 @@ void TInstDlg::initArgument()
 			_tcscpy_s(m_Filename, __targv[1]);
 		}
 
-		//≥ı ºªØ¬∑æ∂
+		//ÂàùÂßãÂåñË∑ØÂæÑ
 		if(2 > __argc) {
 			_tcscpy_s(m_Filename, m_CurrentPath);
 			_tcscat_s(m_Filename, TEXT("\\"));
@@ -456,7 +456,7 @@ int initArgumentException(int code)
 
 	switch(code) {
 	case EXCEPTION_ACCESS_VIOLATION:
-		MessageBoxA(NULL, "¥Ê¥¢±£ª§“Ï≥£ ‘⁄ initArgument", NULL, MB_OK);
+		MessageBoxA(NULL, "Â≠òÂÇ®‰øùÊä§ÂºÇÂ∏∏ Âú® initArgument", NULL, MB_OK);
 		return EXCEPTION_EXECUTE_HANDLER;
 		//return EXCEPTION_CONTINUE_EXECUTION;
 
