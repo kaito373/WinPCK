@@ -1,10 +1,10 @@
-//////////////////////////////////////////////////////////////////////
-// DdsTgaDecoder.cpp: ½«dds¡¢tgaµÄÊı¾İ½âÂë³ÉDIBÊı¾İ
-// ½âÂëdds¡¢tgaµÄÀà
+ï»¿//////////////////////////////////////////////////////////////////////
+// DdsTgaDecoder.cpp: å°†ddsã€tgaçš„æ•°æ®è§£ç æˆDIBæ•°æ®
+// è§£ç ddsã€tgaçš„ç±»
 //
-// ´Ë³ÌĞòÓÉ ÀîÇï·ã/stsm/liqf ±àĞ´
+// æ­¤ç¨‹åºç”± æç§‹æ«/stsm/liqf ç¼–å†™
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄĞŞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßĞÅÏ¢
+// æ­¤ä»£ç é¢„è®¡å°†ä¼šå¼€æºï¼Œä»»ä½•åŸºäºæ­¤ä»£ç çš„ä¿®æ”¹å‘å¸ƒè¯·ä¿ç•™åŸä½œè€…ä¿¡æ¯
 // 
 // 2018.5.29
 //////////////////////////////////////////////////////////////////////
@@ -30,7 +30,7 @@ UINT CDdsTgaDecoder::GetStride()
 	return m_stride;
 }
 
-//·µ»ØÍ¼ÏñµÄ¿íºÍ¸ß
+//è¿”å›å›¾åƒçš„å®½å’Œé«˜
 UINT CDdsTgaDecoder::GetWidth()
 {
 	return m_picWidth;
@@ -40,13 +40,13 @@ UINT CDdsTgaDecoder::GetHeight()
 	return m_picHeight;
 }
 
-//·µ»ØÍ¼ÏñµÄm_decodedDIBFormat
+//è¿”å›å›¾åƒçš„m_decodedDIBFormat
 PixelFormat CDdsTgaDecoder::GetPixelFormat()
 {
 	return m_decodedDIBFormat;
 }
 
-#pragma region ¶ÔÍâ¿ª·ÅµÄ½âÂëº¯Êı
+#pragma region å¯¹å¤–å¼€æ”¾çš„è§£ç å‡½æ•°
 
 BOOL CDdsTgaDecoder::DecodeDDS(LPBYTE _In_data, UINT32 _in_bufsize, LPBYTE &_out_data, UINT &_out__picWidth, UINT &_out_picHeight, LPSTR _out_szFormatDdsTga)
 {
@@ -186,12 +186,12 @@ BOOL CDdsTgaDecoder::CreateBmpBufferByTga()
 	UINT32	*lpdwBuffer = (UINT32*)m_DecodedDIBData;
 	BYTE	*lpTgaData = (BYTE*)m_resBufferInClass + sizeof(TGAHEAD) + pHeader->byteTgaInfoSize;
 
-	//¶ÁÈ¡ÑÕÉ«±í
+	//è¯»å–é¢œè‰²è¡¨
 	if(!makeTgaColorMappedData(lpTgaData, fmt, (char*&)bufferOfColorMappedData, pHeader->wColorTableSize)) {
 		return FALSE;
 	}
 
-	//¿ªÊ¼Ğ´bmpÊı¾İ
+	//å¼€å§‹å†™bmpæ•°æ®
 	switch(fmt) {
 	case FMTTGA_RAWTBL:
 
