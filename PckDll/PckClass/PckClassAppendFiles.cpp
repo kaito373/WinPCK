@@ -1,12 +1,12 @@
-
+ï»¿
 #include "PckClassWriteOperator.h"
 
-//ĞÂ½¨¡¢¸üĞÂpck°ü
+//Ğ Ğ’Ğ…ĞĞÑÑ‘ÑŒĞ Ğ’pckÂ°ÑŒ
 BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstring> &lpszFilePath, const PCK_PATH_NODE* lpNodeToInsert)
 {
-	DWORD		dwNewFileCount = 0;			//ÎÄ¼şÊıÁ¿, Ô­pckÎÄ¼şÖĞµÄÎÄ¼şÊı
+	DWORD		dwNewFileCount = 0;			//ĞĞ”Ñ˜ÑĞšÑĞ‘Ñ—, Ğ¤Â­pckĞĞ”Ñ˜ÑĞ¦Ğ ÂµĞ”ĞĞ”Ñ˜ÑĞšÑ
 	DWORD		dwDuplicateFileCount = 0;
-	QWORD		qwTotalNewFileSize = 0;						//Î´Ñ¹ËõÊ±ËùÓĞÎÄ¼ş´óĞ¡
+	QWORD		qwTotalNewFileSize = 0;						//ĞÒ‘Ğ¡â„–Ğ›Ñ…ĞšÂ±Ğ›Ñ‰Ğ£Ğ ĞĞ”Ñ˜ÑÒ‘ÑƒĞ Ğ
 
 	int			level = m_lpPckParams->dwCompressLevel;
 	int			threadnum = m_lpPckParams->dwMTThread;
@@ -14,15 +14,15 @@ BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstri
 	QWORD		dwAddressWhereToAppendData;
 	THREAD_PARAMS		cThreadParams;
 
-	//¿ªÊ¼²éÕÒÎÄ¼ş
+	//Ñ—Ğ„ĞšÑ˜Ğ†Ğ¹Ğ¥Ğ¢ĞĞ”Ñ˜Ñ
 	const PCK_PATH_NODE*		lpNodeToInsertPtr;
 
-#pragma region ÖØÖÃÑ¹Ëõ²ÎÊı
+#pragma region Ğ¦Ğ¨Ğ¦Ğ“Ğ¡â„–Ğ›Ñ…Ğ†ĞĞšÑ
 	m_zlib.init_compressor(level);
 #pragma endregion
 
 
-#pragma region ÉèÖÃ²ÎÊı
+#pragma region Ğ™Ğ¸Ğ¦Ğ“Ğ†ĞĞšÑ
 	
 	m_FilesToBeAdded.clear();
 	m_PckAllInfo.lpFilesToBeAdded = &m_FilesToBeAdded;
@@ -31,10 +31,10 @@ BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstri
 
 		lpNodeToInsertPtr = lpNodeToInsert;
 
-		//´ÓÎÄ¼şÎ²Ìí¼ÓÊı¾İ£¬²Ù×÷Ê§°Üºó¿É»ØÍË
+		//Ò‘Ğ£ĞĞ”Ñ˜ÑĞĞ†ĞœĞ½Ñ˜Ğ£ĞšÑÑ•Ğ­ĞˆÂ¬Ğ†Ğ©Ğ§Ñ‡ĞšÂ§Â°Ğ¬Ñ”ÑƒÑ—Ğ™Â»Ğ¨ĞĞ›
 		dwAddressWhereToAppendData = m_PckAllInfo.qwPckSize;
 
-		//È¡µÃµ±Ç°½ÚµãµÄÏà¶ÔÂ·¾¶
+		//Ğ˜ĞÂµĞ“ÂµÂ±Ğ—Â°Ğ…ĞªÂµĞ³ÂµĞ”ĞŸĞ°Â¶Ğ¤Ğ’Â·Ñ•Â¶
 		if(!GetCurrentNodeString(cThreadParams.cDataFetchMethod.szCurrentNodeString, lpNodeToInsert)) {
 			assert(FALSE);
 			return FALSE;
@@ -47,7 +47,7 @@ BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstri
 			TEXT_LOG_LEVEL_THREAD, level, threadnum);
 
 	} else {
-		//ĞÂ½¨ÎÄ¼ş
+		//Ğ Ğ’Ğ…ĞĞĞ”Ñ˜Ñ
 		//m_PckAllInfo.dwAddressOfFilenameIndex = PCK_DATA_START_AT;
 		dwAddressWhereToAppendData = PCK_DATA_START_AT;
 
@@ -65,7 +65,7 @@ BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstri
 
 #pragma endregion
 
-#pragma region ±éÀú´ıÌí¼ÓµÄÎÄ¼ş 
+#pragma region éå†å¾…æ·»åŠ çš„æ–‡ä»¶
 	if(!EnumAllFilesByPathList(lpszFilePath, dwNewFileCount, qwTotalNewFileSize, m_PckAllInfo.lpFilesToBeAdded))
 		return FALSE;
 
@@ -73,37 +73,37 @@ BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstri
 
 	m_PckAllInfo.dwFileCountToAdd = dwNewFileCount;
 #pragma endregion
-	//²ÎÊıËµÃ÷£º
-	// mt_dwFileCount	Ìí¼ÓµÄÎÄ¼ş×ÜÊı£¬¼ÆÖØ¸´
-	// dwFileCount		¼ÆËã¹ı³ÌÊ¹ÓÃ²ÎÊı£¬ÔÚÏÂÃæµÄ¼ÆËã¹ı³ÌÖĞ½«Ê¹ÓÃ´Ë²ÎÊı±íÊ¾Ìí¼ÓµÄÎÄ¼ş×ÜÊı£¬²»¼ÆÖØ¸´
+	//Ğ†ĞĞšÑĞ›ÂµĞ“Ñ‡ĞˆÑ”
+	// mt_dwFileCount	ĞœĞ½Ñ˜Ğ£ÂµĞ”ĞĞ”Ñ˜ÑĞ§Ğ¬ĞšÑĞˆÂ¬Ñ˜Ğ–Ğ¦Ğ¨Ñ‘Ò‘
+	// dwFileCount		Ñ˜Ğ–Ğ›Ğ³â„–ÑÑ–ĞœĞšâ„–Ğ£Ğ“Ğ†ĞĞšÑĞˆÂ¬Ğ¤ĞªĞŸĞ’Ğ“Ğ¶ÂµĞ”Ñ˜Ğ–Ğ›Ğ³â„–ÑÑ–ĞœĞ¦Ğ Ğ…Â«Ğšâ„–Ğ£Ğ“Ò‘Ğ›Ğ†ĞĞšÑÂ±Ğ½ĞšÑ•ĞœĞ½Ñ˜Ğ£ÂµĞ”ĞĞ”Ñ˜ÑĞ§Ğ¬ĞšÑĞˆÂ¬Ğ†Â»Ñ˜Ğ–Ğ¦Ğ¨Ñ‘Ò‘
 
-	//ÎÄ¼şÊıĞ´Èë´°¿ÚÀàÖĞ±£´æÒÔÏÔÊ¾½ø¶È
+	//ĞĞ”Ñ˜ÑĞšÑĞ Ò‘Ğ˜Ğ»Ò‘Â°Ñ—ĞªĞĞ°Ğ¦Ğ Â±ĞˆÒ‘Ğ¶Ğ¢Ğ¤ĞŸĞ¤ĞšÑ•Ğ…ÑˆÂ¶Ğ˜
 	SetParams_ProgressUpper(dwNewFileCount);
 
-	//¼ÆËã´ó¸ÅĞèÒª¶à´ó¿Õ¼äqwTotalFileSize
+	//Ñ˜Ğ–Ğ›Ğ³Ò‘ÑƒÑ‘Ğ•Ğ Ğ¸Ğ¢Ğ„Â¶Ğ°Ò‘ÑƒÑ—Ğ¥Ñ˜Ğ´qwTotalFileSize
 	mt_CompressTotalFileSize = GetPckFilesizeByCompressed(szPckFile, qwTotalNewFileSize, m_PckAllInfo.qwPckSize);
 
-	//ÓëÔ­À´Ä¿Â¼ÖĞµÄÎÄ¼ş¶Ô±È£¬ÊÇ·ñÓĞÖØÃû
-	//²ßÂÔ£ºÎŞÌõ¼ş¸²¸Ç°É				Èç¹ûÖØÃûÇÒ¶¼ÎªÎÄ¼ş»òÎÄ¼ş¼Ğ£¬Ôò¸²¸Ç
+	//Ğ£Ğ»Ğ¤Â­ĞÒ‘Ğ”Ñ—Ğ’Ñ˜Ğ¦Ğ ÂµĞ”ĞĞ”Ñ˜ÑÂ¶Ğ¤Â±Ğ˜ĞˆÂ¬ĞšĞ—Â·ÑĞ£Ğ Ğ¦Ğ¨Ğ“Ñ‹
+	//Ğ†Ğ¯Ğ’Ğ¤ĞˆÑ”ĞĞ®ĞœÑ…Ñ˜ÑÑ‘Ğ†Ñ‘Ğ—Â°Ğ™				Ğ˜Ğ·â„–Ñ‹Ğ¦Ğ¨Ğ“Ñ‹Ğ—Ğ¢Â¶Ñ˜ĞĞ„ĞĞ”Ñ˜ÑÂ»Ñ‚ĞĞ”Ñ˜ÑÑ˜Ğ ĞˆÂ¬Ğ¤Ñ‚Ñ‘Ğ†Ñ‘Ğ—
 	//
-	//µ÷ÓÃFindFileNode·µ»Ø-1ÍË³ö£¬·µ»Ø0£¬±íÊ¾Ö±½ÓÌí¼Ó£¬·Ç0¾ÍÊÇÓĞÖØ¸´µÄ
-	//Ğ´×¨ÓÃµÄwritethreadºÍcompressthread,ÒÔµ÷ÓÃ
-	//ÔÚPCKINDEXTABLE_COMPRESSÀïÌí¼Óadd×¨ÓÃÊôĞÔ£¬ÒÔÅĞ¶ÏÊÇ·ñÆôÓÃ´Ë½Úµã£¨ÖØÃûÊ±£©0Ê¹ÓÃ£¬1²»Ê¹ÓÃ
-	//½áÊø Ê±Ê¹ÓÃ2¸öÑ­»·Ğ´ÈëÑ¹ËõË÷Òı 
+	//ÂµÑ‡Ğ£Ğ“FindFileNodeÂ·ÂµÂ»Ğ¨-1ĞĞ›Ñ–Ñ†ĞˆÂ¬Â·ÂµÂ»Ğ¨0ĞˆÂ¬Â±Ğ½ĞšÑ•Ğ¦Â±Ğ…Ğ£ĞœĞ½Ñ˜Ğ£ĞˆÂ¬Â·Ğ—0Ñ•ĞĞšĞ—Ğ£Ğ Ğ¦Ğ¨Ñ‘Ò‘ÂµĞ”
+	//Ğ Ò‘Ğ§ĞĞ£Ğ“ÂµĞ”writethreadÑ”Ğcompressthread,Ğ¢Ğ¤ÂµÑ‡Ğ£Ğ“
+	//Ğ¤ĞªPCKINDEXTABLE_COMPRESSĞĞ¿ĞœĞ½Ñ˜Ğ£addĞ§ĞĞ£Ğ“ĞšÑ„Ğ Ğ¤ĞˆÂ¬Ğ¢Ğ¤Ğ•Ğ Â¶ĞŸĞšĞ—Â·ÑĞ–Ñ„Ğ£Ğ“Ò‘Ğ›Ğ…ĞªÂµĞ³ĞˆĞĞ¦Ğ¨Ğ“Ñ‹ĞšÂ±ĞˆÂ©0Ğšâ„–Ğ£Ğ“ĞˆÂ¬1Ğ†Â»Ğšâ„–Ğ£Ğ“
+	//Ğ…Ğ±ĞšÑˆ ĞšÂ±Ğšâ„–Ğ£Ğ“2Ñ‘Ñ†Ğ¡Â­Â»Â·Ğ Ò‘Ğ˜Ğ»Ğ¡â„–Ğ›Ñ…Ğ›Ñ‡Ğ¢Ñ 
 
-	//dwFileCount±äÁ¿ÔÚ´Ë´¦Ö¸µÄÊÇÌí¼ÓµÄÎÄ¼ş³ıÈ¥ÖØÃûµÄÊıÁ¿ 
+	//dwFileCountÂ±Ğ´Ğ‘Ñ—Ğ¤ĞªÒ‘Ğ›Ò‘Â¦Ğ¦Ñ‘ÂµĞ”ĞšĞ—ĞœĞ½Ñ˜Ğ£ÂµĞ”ĞĞ”Ñ˜ÑÑ–ÑĞ˜ÒĞ¦Ğ¨Ğ“Ñ‹ÂµĞ”ĞšÑĞ‘Ñ— 
 	if(m_PckAllInfo.isPckFileLoaded) {
 		if(!FindDuplicateNodeFromFileList(lpNodeToInsertPtr, dwDuplicateFileCount))
 			return FALSE;
 	}
 
-	//ÈÕÖ¾
+	//Ğ˜Ğ¥Ğ¦Ñ•
 	m_PckLog.PrintLogI(TEXT_UPDATE_FILE_INFO, m_PckAllInfo.dwFileCountToAdd, mt_CompressTotalFileSize);
 
-#pragma region ´´½¨Ä¿±êÎÄ¼ş
+#pragma region åˆ›å»ºç›®æ ‡æ–‡ä»¶
 	CMapViewFileMultiPckWrite cFileWriter(m_PckAllInfo.lpSaveAsPckVerFunc->cPckXorKeys.dwMaxSinglePckSize);
 
-	//OPEN_ALWAYS£¬ĞÂ½¨ĞÂµÄpck(CREATE_ALWAYS)»ò¸üĞÂ´æÔÚµÄpck(OPEN_EXISTING)
+	//OPEN_ALWAYSĞˆÂ¬Ğ Ğ’Ğ…ĞĞ Ğ’ÂµĞ”pck(CREATE_ALWAYS)Â»Ñ‚Ñ‘ÑŒĞ Ğ’Ò‘Ğ¶Ğ¤ĞªÂµĞ”pck(OPEN_EXISTING)
 	if(!cFileWriter.OpenPckAndMappingWrite(m_PckAllInfo.szNewFilename, OPEN_ALWAYS, mt_CompressTotalFileSize)) {
 		return FALSE;
 	}
@@ -116,7 +116,7 @@ BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstri
 
 	cThreadParams.GetUncompressedData = &GetUncompressedDataFromFile;
 
-	//ºÇºÇ£¬ÏÂÃæÁ½¸öº¯ÊıºÃÏñÓÀÔ¶·µ»ØTRUE
+	//Ñ”Ğ—Ñ”Ğ—ĞˆÂ¬ĞŸĞ’Ğ“Ğ¶Ğ‘Ğ…Ñ‘Ñ†Ñ”Ğ‡ĞšÑÑ”Ğ“ĞŸÑĞ£ĞĞ¤Â¶Â·ÂµÂ»Ğ¨TRUE
 	if(!initMultiThreadVars(&cFileWriter)) {
 		return FALSE;
 	}
@@ -128,7 +128,7 @@ BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstri
 	ExecuteMainThreadGroup(m_PckAllInfo, threadnum, &cThreadParams);
 	dwAddressWhereToAppendData = m_PckAllInfo.dwAddressOfFilenameIndex;
 
-	//Ğ´ÎÄ¼şË÷Òı
+	//Ğ Ò‘ĞĞ”Ñ˜ÑĞ›Ñ‡Ğ¢Ñ
 	m_PckAllInfo.dwFileCount = m_PckAllInfo.dwFileCountOld - dwDuplicateFileCount;
 
 	WriteAllIndex(mt_lpFileWrite, &m_PckAllInfo, dwAddressWhereToAppendData);
@@ -137,7 +137,7 @@ BOOL CPckClassWriteOperator::UpdatePckFile(LPCTSTR szPckFile, const vector<tstri
 
 	uninitCompressedDataQueue();
 
-	//ÔÚÕâÀïÖØĞÂ´ò¿ªÒ»´Î£¬»òÕßÖ±½Ó´ò¿ª£¬ÓÉ½çÃæÏß³ÌÍê³É
+	//Ğ¤ĞªĞ¥Ğ²ĞĞ¿Ğ¦Ğ¨Ğ Ğ’Ò‘Ñ‚Ñ—Ğ„Ğ¢Â»Ò‘ĞĞˆÂ¬Â»Ñ‚Ğ¥Ğ¯Ğ¦Â±Ğ…Ğ£Ò‘Ñ‚Ñ—Ğ„ĞˆÂ¬Ğ£Ğ™Ğ…Ğ·Ğ“Ğ¶ĞŸĞ¯Ñ–ĞœĞĞºÑ–Ğ™
 	m_lpPckParams->cVarParams.dwOldFileCount = m_PckAllInfo.dwFileCountOld;
 	m_lpPckParams->cVarParams.dwPrepareToAddFileCount = dwNewFileCount;
 	m_lpPckParams->cVarParams.dwChangedFileCount = m_PckAllInfo.dwFileCountToAdd;

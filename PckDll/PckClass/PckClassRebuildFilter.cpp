@@ -1,9 +1,9 @@
-//////////////////////////////////////////////////////////////////////
-// PckClassRebuildFilter.cpp: ���ڽ������˽ű�
+﻿//////////////////////////////////////////////////////////////////////
+// PckClassRebuildFilter.cpp: УГУЪЅвОц№эВЛЅЕ±ѕ
 //
-// �˳����� �����/stsm/liqf ��д�����ִ����д��RapidCRC
+// ґЛіМРтУЙ АоЗп·г/stsm/liqf ±аРґЈ¬Ії·ЦґъВлёДРґЧФRapidCRC
 //
-// �˴��뿪Դ���κλ��ڴ˴�����޸ķ����뱣��ԭ������Ϣ
+// ґЛґъВлїЄФґЈ¬ИОєО»щУЪґЛґъВлµДРЮёД·ўІјЗл±ЈБфФ­ЧчХЯРЕПў
 // 
 // 2018.5.15
 //////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ CPckClassRebuildFilter::~CPckClassRebuildFilter()
 	ResetRebuildFilterInIndexList();
 }
 
-#pragma region ��ȡ�ļ���ת��ΪUnicode
+#pragma region 读取文件并转换为Unicode
 
 BOOL CPckClassRebuildFilter::OpenScriptFileAndConvBufToUcs2(LPCTSTR lpszScriptFile)
 {
@@ -33,7 +33,7 @@ BOOL CPckClassRebuildFilter::OpenScriptFileAndConvBufToUcs2(LPCTSTR lpszScriptFi
 	
 	CTextLineSpliter	cText2Line;
 
-	//��ȡ�ļ������ַ�
+	//¶БИЎОДјюЛщУРЧЦ·ы
 	if (nullptr == (lpBufferToRead = (char*)cFileRead.OpenMappingViewAllRead(lpszScriptFile))) 
 		return FALSE;
 
@@ -50,7 +50,7 @@ BOOL CPckClassRebuildFilter::OpenScriptFileAndConvBufToUcs2(LPCTSTR lpszScriptFi
 BOOL CPckClassRebuildFilter::ParseOneLine(FILEOP * pFileOp, LPCWSTR lpszLine)
 {
 	wchar_t szOperator[16] = { 0 };
-	//���ȼ��16���ַ�����û�пո��tab
+	//КЧПИјмІй16ёцЧЦ·ыДЪУРГ»УРїХёс»тtab
 	const wchar_t *lpszCell = lpszLine, *lpszSearch = lpszLine;
 	size_t count = 0;
 
@@ -70,14 +70,14 @@ BOOL CPckClassRebuildFilter::ParseOneLine(FILEOP * pFileOp, LPCWSTR lpszLine)
 	if(!isValid)
 		return FALSE;
 
-	//����szOperator
+	//ЅвОцszOperator
 	const wchar_t *lpszOpPos = wcsstr(szOperators, szOperator);
 	if(NULL == lpszOpPos)
 		return FALSE;
 
 	pFileOp->op = SCRIPTOP((lpszOpPos - szOperators) / 8);
 
-	//���˵�ʣ�µĿո��tab
+	//№эВЛµфКЈПВµДїХёсєНtab
 	while((' ' == *lpszSearch) || ('\t' == *lpszSearch))
 		lpszSearch++;
 
@@ -89,7 +89,7 @@ BOOL CPckClassRebuildFilter::ParseOneLine(FILEOP * pFileOp, LPCWSTR lpszLine)
 
 	wcscpy(pFileOp->szFilename, lpszSearch);
 
-	////����ļ����Ƿ���ȷ
+	////јмІйОДјюГыКЗ·сХэИ·
 	//if(OP_CheckFile == pFileOp->op) {
 
 	//	if(0 == _tcsicmp(lpszFileName, pFileOp->szFilename))
@@ -102,7 +102,7 @@ BOOL CPckClassRebuildFilter::ParseOneLine(FILEOP * pFileOp, LPCWSTR lpszLine)
 	return TRUE;
 }
 
-//�ֽ�ű��е�Ŀ¼
+//·ЦЅвЅЕ±ѕЦРµДДїВј
 void CPckClassRebuildFilter::SepratePaths(FILEOP * pFileOp)
 {
 	wcscpy(pFileOp->szFilenameBuffer, pFileOp->szFilename);
@@ -116,7 +116,7 @@ void CPckClassRebuildFilter::SepratePaths(FILEOP * pFileOp)
 	while(*lpszSearch) {
 
 		wchar_t *test = wcschr(lpszSearch, L'\\');
-		//����û�п��Ǵ���\\˫б�ܵ����
+		//ХвАпГ»УРїјВЗґжФЪ\\Л«Р±ёЬµДЗйїц
 		if((L'\\' == *lpszSearch) || (L'/' == *lpszSearch)) {
 			*lpszSearch = 0;
 			++lpszSearch;
@@ -135,7 +135,7 @@ LPPCK_PATH_NODE CPckClassRebuildFilter::LocationFileIndex(LPWSTR *lpszPaths, LPP
 	if((NULL == lpszSearchDir) || (NULL == lpNode))
 		return NULL;
 
-	//ֱ������..Ŀ¼
+	//Ц±ЅУМш№э..ДїВј
 	LPPCK_PATH_NODE lpNodeSearch = lpNode->next;
 
 	while(1) {
@@ -145,7 +145,7 @@ LPPCK_PATH_NODE CPckClassRebuildFilter::LocationFileIndex(LPWSTR *lpszPaths, LPP
 
 		if(0 == wcsicmp(lpszSearchDir, lpNodeSearch->szName)) {
 
-			//�Ƿ��Ѿ�ƥ����
+			//КЗ·сТСѕ­ЖҐЕдНк
 			if(NULL == *(lpszPaths + 1)) {
 
 				return lpNodeSearch;
@@ -179,7 +179,7 @@ void CPckClassRebuildFilter::MarkFilterFlagToFileIndex(LPPCKINDEXTABLE	lpPckInde
 	m_EditedNode.push_back(lpPckIndexTable);
 }
 
-//��һ�нű�����Ӧ�õ����ҵ����ļ��б���
+//Ѕ«Т»РРЅЕ±ѕДЪИЭУ¦УГµЅІйХТµЅµДОДјюБР±нЦР
 void CPckClassRebuildFilter::MarkFilterFlagToNode(LPPCK_PATH_NODE lpNode, SCRIPTOP op)
 {
 	lpNode = lpNode->child->next;
@@ -198,12 +198,12 @@ void CPckClassRebuildFilter::MarkFilterFlagToNode(LPPCK_PATH_NODE lpNode, SCRIPT
 }
 
 
-#pragma region ApplyScript2IndexList,���ű�����Ӧ�õ��ļ��б���
+#pragma region ApplyScript2IndexList,将脚本内容应用到文件列表中
 
-//���ű�����Ӧ�õ��ļ��б���
+//Ѕ«ЅЕ±ѕДЪИЭУ¦УГµЅОДјюБР±нЦР
 BOOL CPckClassRebuildFilter::ApplyScript2IndexList(LPPCK_PATH_NODE lpRootNode)
 {
-	//���������Ƿ����˴���
+	//ЅвОц№эіМКЗ·с·ўЙъБЛґнОу
 	BOOL bHasErrorHappend = FALSE;
 	m_EditedNode.clear();
 
@@ -213,15 +213,15 @@ BOOL CPckClassRebuildFilter::ApplyScript2IndexList(LPPCK_PATH_NODE lpRootNode)
 
 		if(OP_CheckFile != pFileOp->op) {
 
-			//�ֽ�ű��е�Ŀ¼
+			//·ЦЅвЅЕ±ѕЦРµДДїВј
 			SepratePaths(pFileOp);
 
-			//��λ�ļ�����
+			//¶ЁО»ОДјюЛчТэ
 			LPPCK_PATH_NODE lpFoundNode = LocationFileIndex(pFileOp->lpszSepratedPaths, lpRootNode->child);
 
 			if(NULL == lpFoundNode) {
 
-				m_PckLog.PrintLogW(TEXT("�ѽ����ű�ʧ����: %s, ����..."), pFileOp->szFilename);
+				m_PckLog.PrintLogW(TEXT("ТСЅвОцЅЕ±ѕК§°ЬФЪ: %s, Мш№э..."), pFileOp->szFilename);
 				bHasErrorHappend = TRUE;
 
 			} else {
@@ -246,7 +246,7 @@ BOOL CPckClassRebuildFilter::ParseScript(LPCTSTR lpszScriptFile)
 {
 
 	if (!OpenScriptFileAndConvBufToUcs2(lpszScriptFile)) {
-		m_PckLog.PrintLogI("��ȡ�ű�ʧ��");
+		m_PckLog.PrintLogI("¶БИЎЅЕ±ѕК§°Ь");
 		return FALSE; 
 	}
 
@@ -255,9 +255,9 @@ BOOL CPckClassRebuildFilter::ParseScript(LPCTSTR lpszScriptFile)
 
 	for (int i = 0; i < m_ScriptLines.size(); i++) {
 
-		//����ע����
+		//№эВЛЧўКНРР
 		if (L';' != m_ScriptLines[i].at(0)) {
-			//һ�нű���Ϊ�����֣��������ļ���
+			//Т»РРЅЕ±ѕ·ЦОЄБЅІї·ЦЈ¬ІЩЧчєНОДјюГы
 			if (ParseOneLine(pFileOp, m_ScriptLines[i].c_str())) {
 
 				m_FirstFileOp.push_back(FILEOP{ 0 });
@@ -266,18 +266,18 @@ BOOL CPckClassRebuildFilter::ParseScript(LPCTSTR lpszScriptFile)
 			}
 			else {
 
-				m_PckLog.PrintLogW("�ű�����ʧ������%d: %ls, ����...", i, m_ScriptLines[i].c_str());
+				m_PckLog.PrintLogW("ЅЕ±ѕЅвОцК§°ЬФЪРР%d: %ls, Мш№э...", i, m_ScriptLines[i].c_str());
 
 				return FALSE;
 			}
 		}
 	}
 
-	m_PckLog.PrintLogI("�����ű��ɹ�");
+	m_PckLog.PrintLogI("ЅвОцЅЕ±ѕіЙ№¦");
 	return TRUE;
 }
 
-//������ؽ���ʱ����Ҫ��ȡ�Ĺ�����Ϣ
+//ЗеіэµфЦШЅЁ°ьК±ЛщРиТЄ¶БИЎµД№эВЛРЕПў
 void CPckClassRebuildFilter::ResetRebuildFilterInIndexList()
 {
 	for(DWORD i = 0;i < m_EditedNode.size();++i) {
@@ -291,20 +291,20 @@ void CPckClassRebuildFilter::ResetRebuildFilterInIndexList()
 	}
 }
 
-//Ӧ�ýű�����
+//У¦УГЅЕ±ѕДЪИЭ
 BOOL CPckClassRebuildFilter::Apply(LPPCK_PATH_NODE lpRootNode)
 {
 	BOOL rtn = FALSE;
 
-	//������Ӧ����tree��
+	//Ѕ«КэѕЭУ¦УГУЪtreeЦР
 	rtn = ApplyScript2IndexList(lpRootNode);
 
 	if (!rtn) {
 		ResetRebuildFilterInIndexList();
-		m_PckLog.PrintLogI("Ӧ�ýű�ʧ��");
+		m_PckLog.PrintLogI("У¦УГЅЕ±ѕК§°Ь");
 	}
 	else {
-		m_PckLog.PrintLogI("Ӧ�ýű��ɹ�");
+		m_PckLog.PrintLogI("У¦УГЅЕ±ѕіЙ№¦");
 	}
 
 	return rtn;
@@ -326,7 +326,7 @@ BOOL CPckClassRebuildFilter::TestScript(LPCTSTR lpszScriptFile)
 
 BOOL CPckClassRebuildFilter::ModelTextureCheck(LPCWSTR lpszFilename)
 {
-	//·������*\textures\*.dds
+	//В·ѕ¶№жФтЈ¬*\textures\*.dds
 
 	LPCWSTR constTexturePath = L"\\textures\\";
 	LPCWSTR constDdsExt = L".dds";
@@ -360,8 +360,8 @@ void CPckClassRebuildFilter::StripModelTexture(LPPCKINDEXTABLE lpPckIndexHead, D
 
 	int nDetectOffset = 0;
 #if 0
-	//���pckĿ¼�е��ļ����Ƿ���pck�ļ�����ͷ
-	//��gfx.pck�и�Ŀ¼Ϊgfx��ֻ��һ��
+	//јмІвpckДїВјЦРµДОДјюјРКЗ·сТФpckОДјюГыїЄН·
+	//Изgfx.pckЦРёщДїВјОЄgfxЗТЦ»УРТ»ёц
 	LPPCK_PATH_NODE lpRootNodeFirstDir = lpRootNode->next;
 	int nRootDirCount = 0;
 	vector<wstring> sRootDirs;
@@ -376,7 +376,7 @@ void CPckClassRebuildFilter::StripModelTexture(LPPCKINDEXTABLE lpPckIndexHead, D
 		lpRootNodeFirstDir = lpRootNodeFirstDir->next;
 	}
 
-	//ֻ��3�������ĸ�Ŀ¼��ȡ��Ŀ¼��,�Ա��ļ���
+	//Ц»УР3ёцІ»µЅµДёщДїВјЈ¬ИЎёщДїВјГы,¶Ф±ИОДјюГы
 	if (3 > nRootDirCount) {
 		wchar_t szFileTitle[MAX_PATH];
 		wchar_t* lpszExt = nullptr;
@@ -388,7 +388,7 @@ void CPckClassRebuildFilter::StripModelTexture(LPPCKINDEXTABLE lpPckIndexHead, D
 			*lpszExt = 0;
 		}
 
-		//�Ա�
+		//¶Ф±И
 		for (int i = 0; i < sRootDirs.size(); i++) {
 
 			if (nullptr != wcsstr(szFileTitle, sRootDirs[i].c_str())) {

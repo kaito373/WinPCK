@@ -1,4 +1,4 @@
-#include "PckClassWriteOperator.h"
+ï»¿#include "PckClassWriteOperator.h"
 #include "PckClassFileDisk.h"
 #include "PckClassRebuildFilter.h"
 
@@ -15,7 +15,7 @@ CPckClassWriteOperator::~CPckClassWriteOperator()
 
 /********************************
 *
-*¹«¹²º¯Êı
+*â„–Â«â„–Ğ†Ñ”Ğ‡ĞšÑ
 *
 ********************/
 
@@ -31,7 +31,7 @@ BOOL CPckClassWriteOperator::RebuildPckFile(LPCTSTR lpszScriptFile, LPCTSTR szRe
 
 BOOL CPckClassWriteOperator::StripPck(LPCTSTR lpszStripedPckFile, int flag)
 {
-	//Ê×ÏÈ¹ıÂË*\textures\*.dds
+	//ĞšĞ§ĞŸĞ˜â„–ÑĞ’Ğ›*\textures\*.dds
 	CPckClassRebuildFilter cScriptFilter;
 
 	if (PCK_STRIP_DDS & flag) {
@@ -57,25 +57,25 @@ BOOL CPckClassWriteOperator::RebuildPckFile(LPCTSTR szRebuildPckFile)
 	DWORD	dwValidFileCount = ReCountFiles();
 	QWORD	dwTotalFileSizeAfterRebuild = GetPckFilesizeRebuild(szRebuildPckFile, m_PckAllInfo.qwPckSize);
 
-	//¹¹ÔìÍ·ºÍÎ²Ê±ĞèÒªµÄ²ÎÊı
+	//â„–â„–Ğ¤Ğ¼ĞÂ·Ñ”ĞĞĞ†ĞšÂ±Ğ Ğ¸Ğ¢Ğ„ÂµĞ”Ğ†ĞĞšÑ
 	PCK_ALL_INFOS		pckAllInfo;
-	//¹¹ÔìÍ·ºÍÎ²Ê±ĞèÒªµÄ²ÎÊı
+	//â„–â„–Ğ¤Ğ¼ĞÂ·Ñ”ĞĞĞ†ĞšÂ±Ğ Ğ¸Ğ¢Ğ„ÂµĞ”Ğ†ĞĞšÑ
 	memcpy(&pckAllInfo, &m_PckAllInfo, sizeof(PCK_ALL_INFOS));
 	_tcscpy_s(pckAllInfo.szNewFilename, szRebuildPckFile);
 
-	//Ïß³Ì±ê¼Ç
+	//ĞŸĞ¯Ñ–ĞœÂ±ĞºÑ˜Ğ—
 	SetThreadFlag(TRUE);
 
-	//ÉèÖÃ½çÃæ½ø¶ÈÌõ×ÜÖµ
+	//Ğ™Ğ¸Ğ¦Ğ“Ğ…Ğ·Ğ“Ğ¶Ğ…ÑˆÂ¶Ğ˜ĞœÑ…Ğ§Ğ¬Ğ¦Âµ
 	SetParams_ProgressUpper(dwValidFileCount);
 
-	//´ò¿ªÔ´ÎÄ¼ş 
+	//Ò‘Ñ‚Ñ—Ğ„Ğ¤Ò‘ĞĞ”Ñ˜Ñ 
 	CMapViewFileMultiPckRead	cFileRead;
 	if(!cFileRead.OpenPckAndMappingRead(pckAllInfo.szFilename)) 
 		return FALSE;
 
-	//´ò¿ªÄ¿±êÎÄ¼ş 
-	//ÒÔÏÂÊÇ´´½¨Ò»¸öÎÄ¼ş£¬ÓÃÀ´±£´æÖØ½¨ºóµÄÎÄ¼ş
+	//Ò‘Ñ‚Ñ—Ğ„Ğ”Ñ—Â±ĞºĞĞ”Ñ˜Ñ 
+	//Ğ¢Ğ¤ĞŸĞ’ĞšĞ—Ò‘Ò‘Ğ…ĞĞ¢Â»Ñ‘Ñ†ĞĞ”Ñ˜ÑĞˆÂ¬Ğ£Ğ“ĞÒ‘Â±ĞˆÒ‘Ğ¶Ğ¦Ğ¨Ğ…ĞÑ”ÑƒÂµĞ”ĞĞ”Ñ˜Ñ
 	CMapViewFileMultiPckWrite	cFileWrite(pckAllInfo.lpSaveAsPckVerFunc->cPckXorKeys.dwMaxSinglePckSize);
 
 	if(!cFileWrite.OpenPckAndMappingWrite(szRebuildPckFile, CREATE_ALWAYS, dwTotalFileSizeAfterRebuild))
@@ -83,7 +83,7 @@ BOOL CPckClassWriteOperator::RebuildPckFile(LPCTSTR szRebuildPckFile)
 
 	vector<PCKINDEXTABLE_COMPRESS> cPckIndexTable(dwValidFileCount);
 
-	//²»Ê¹ÓÃEnum½øĞĞ±éÀú´¦Àí£¬¸ÄÓÃ_PCK_INDEX_TABLE
+	//Ğ†Â»Ğšâ„–Ğ£Ğ“EnumĞ…ÑˆĞ Ğ Â±Ğ¹ĞÑŠÒ‘Â¦ĞĞ½ĞˆÂ¬Ñ‘Ğ”Ğ£Ğ“_PCK_INDEX_TABLE
 
 	LPPCKINDEXTABLE lpPckIndexTableSource = pckAllInfo.lpPckIndexTable;
 	pckAllInfo.dwFileCountToAdd = 0;
@@ -103,7 +103,7 @@ BOOL CPckClassWriteOperator::RebuildPckFile(LPCTSTR szRebuildPckFile)
 		LPBYTE lpBufferToRead;
 
 		DWORD dwNumberOfBytesToMap = lpPckIndexTableSource->cFileIndex.dwFileCipherTextSize;
-		DWORD dwSrcAddress = lpPckIndexTableSource->cFileIndex.dwAddressOffset;	//±£´æÔ­À´µÄµØÖ·
+		DWORD dwSrcAddress = lpPckIndexTableSource->cFileIndex.dwAddressOffset;	//Â±ĞˆÒ‘Ğ¶Ğ¤Â­ĞÒ‘ÂµĞ”ÂµĞ¨Ğ¦Â·
 
 		if (0 != dwNumberOfBytesToMap) {
 
@@ -117,14 +117,14 @@ BOOL CPckClassWriteOperator::RebuildPckFile(LPCTSTR szRebuildPckFile)
 
 		}
 
-		//Ğ´Èë´ËÎÄ¼şµÄPckFileIndexÎÄ¼şÑ¹ËõĞÅÏ¢²¢Ñ¹Ëõ
-		lpPckIndexTableSource->cFileIndex.dwAddressOffset = dwAddress;	//´ËÎÄ¼şµÄÑ¹ËõÊı¾İÆğÊ¼µØÖ·
+		//Ğ Ò‘Ğ˜Ğ»Ò‘Ğ›ĞĞ”Ñ˜ÑÂµĞ”PckFileIndexĞĞ”Ñ˜ÑĞ¡â„–Ğ›Ñ…Ğ Ğ•ĞŸÑĞ†ÑĞ¡â„–Ğ›Ñ…
+		lpPckIndexTableSource->cFileIndex.dwAddressOffset = dwAddress;	//Ò‘Ğ›ĞĞ”Ñ˜ÑÂµĞ”Ğ¡â„–Ğ›Ñ…ĞšÑÑ•Ğ­Ğ–Ñ€ĞšÑ˜ÂµĞ¨Ğ¦Â·
 
-		dwAddress += dwNumberOfBytesToMap;	//ÏÂÒ»¸öÎÄ¼şµÄÑ¹ËõÊı¾İÆğÊ¼µØÖ·
+		dwAddress += dwNumberOfBytesToMap;	//ĞŸĞ’Ğ¢Â»Ñ‘Ñ†ĞĞ”Ñ˜ÑÂµĞ”Ğ¡â„–Ğ›Ñ…ĞšÑÑ•Ğ­Ğ–Ñ€ĞšÑ˜ÂµĞ¨Ğ¦Â·
 
 		FillAndCompressIndexData(&cPckIndexTable[pckAllInfo.dwFileCountToAdd], &lpPckIndexTableSource->cFileIndex);
 
-		lpPckIndexTableSource->cFileIndex.dwAddressOffset = dwSrcAddress;	//»¹Ô­Ô­À´µÄµØÖ·
+		lpPckIndexTableSource->cFileIndex.dwAddressOffset = dwSrcAddress;	//Â»â„–Ğ¤Â­Ğ¤Â­ĞÒ‘ÂµĞ”ÂµĞ¨Ğ¦Â·
 
 		++lpPckIndexTableSource;
 		++(pckAllInfo.dwFileCountToAdd);
@@ -135,15 +135,15 @@ BOOL CPckClassWriteOperator::RebuildPckFile(LPCTSTR szRebuildPckFile)
 	pckAllInfo.dwFileCountOld = pckAllInfo.dwFileCount = 0;
 	pckAllInfo.lpPckIndexTableToAdd = &cPckIndexTable;
 
-	//¹Ø±Õ¶ÁÎÄ¼ş
-	//Ğ´ÎÄ¼şË÷Òı
+	//â„–Ğ¨Â±Ğ¥Â¶Ğ‘ĞĞ”Ñ˜Ñ
+	//Ğ Ò‘ĞĞ”Ñ˜ÑĞ›Ñ‡Ğ¢Ñ
 	pckAllInfo.dwAddressOfFilenameIndex = dwAddress;
 
 	WriteAllIndex(&cFileWrite, &pckAllInfo, dwAddress);
 
 	AfterProcess(&cFileWrite, pckAllInfo, dwAddress);
 
-	//Ïß³Ì±ê¼Ç
+	//ĞŸĞ¯Ñ–ĞœÂ±ĞºÑ˜Ğ—
 	SetThreadFlag(FALSE);
 
 	m_PckLog.PrintLogI(TEXT_LOG_WORKING_DONE);
@@ -152,7 +152,7 @@ BOOL CPckClassWriteOperator::RebuildPckFile(LPCTSTR szRebuildPckFile)
 }
 
 
-//ÖØÑ¹ËõÎÄ¼ş
+//Ğ¦Ğ¨Ğ¡â„–Ğ›Ñ…ĞĞ”Ñ˜Ñ
 BOOL CPckClassWriteOperator::RecompressPckFile(LPCTSTR szRecompressPckFile, int iStripMode)
 {
 
@@ -167,26 +167,26 @@ BOOL CPckClassWriteOperator::RecompressPckFile(LPCTSTR szRecompressPckFile, int 
 	CMapViewFileMultiPckRead	cFileRead;
 	int					threadnum = m_lpPckParams->dwMTThread;
 
-#pragma region ÖØÖÃÑ¹Ëõ²ÎÊı
+#pragma region Ğ¦Ğ¨Ğ¦Ğ“Ğ¡â„–Ğ›Ñ…Ğ†ĞĞšÑ
 	m_zlib.init_compressor(m_lpPckParams->dwCompressLevel);
 #pragma endregion
 
-	//¹¹ÔìÍ·ºÍÎ²Ê±ĞèÒªµÄ²ÎÊı
+	//â„–â„–Ğ¤Ğ¼ĞÂ·Ñ”ĞĞĞ†ĞšÂ±Ğ Ğ¸Ğ¢Ğ„ÂµĞ”Ğ†ĞĞšÑ
 	PCK_ALL_INFOS		pckAllInfo;
 	memcpy(&pckAllInfo, &m_PckAllInfo, sizeof(PCK_ALL_INFOS));
 	_tcscpy_s(pckAllInfo.szNewFilename, szRecompressPckFile);
 
-	//ÉèÖÃ½çÃæ½ø¶ÈÌõ×ÜÖµ
+	//Ğ™Ğ¸Ğ¦Ğ“Ğ…Ğ·Ğ“Ğ¶Ğ…ÑˆÂ¶Ğ˜ĞœÑ…Ğ§Ğ¬Ğ¦Âµ
 	SetParams_ProgressUpper(dwNoDupFileCount);
 
-	//´ò¿ªÔ´ÎÄ¼ş 
+	//Ò‘Ñ‚Ñ—Ğ„Ğ¤Ò‘ĞĞ”Ñ˜Ñ 
 	if(!cFileRead.OpenPckAndMappingRead(pckAllInfo.szFilename))
 		return FALSE;
 
-#pragma region ´´½¨Ä¿±êÎÄ¼ş
+#pragma region åˆ›å»ºç›®æ ‡æ–‡ä»¶
 	CMapViewFileMultiPckWrite cFileWriter(pckAllInfo.lpSaveAsPckVerFunc->cPckXorKeys.dwMaxSinglePckSize);
 
-	//OPEN_ALWAYS£¬ĞÂ½¨ĞÂµÄpck(CREATE_ALWAYS)»ò¸üĞÂ´æÔÚµÄpck(OPEN_EXISTING)
+	//OPEN_ALWAYSĞˆÂ¬Ğ Ğ’Ğ…ĞĞ Ğ’ÂµĞ”pck(CREATE_ALWAYS)Â»Ñ‚Ñ‘ÑŒĞ Ğ’Ò‘Ğ¶Ğ¤ĞªÂµĞ”pck(OPEN_EXISTING)
 	if(!cFileWriter.OpenPckAndMappingWrite(pckAllInfo.szNewFilename, CREATE_ALWAYS, dwTotalFileSizeAfterRebuild))
 		return FALSE;
 
@@ -214,12 +214,12 @@ BOOL CPckClassWriteOperator::RecompressPckFile(LPCTSTR szRecompressPckFile, int 
 
 	ExecuteMainThreadGroup(pckAllInfo, threadnum, &cThreadParams);
 
-	//Ğ´ÎÄ¼şË÷Òı
+	//Ğ Ò‘ĞĞ”Ñ˜ÑĞ›Ñ‡Ğ¢Ñ
 
 	pckAllInfo.lpPckIndexTable = NULL;
 	pckAllInfo.dwFileCountOld = pckAllInfo.dwFileCount = 0;
 
-	//È¡Ïûºó£¬ÎÄ¼şÊıÁ¿
+	//Ğ˜ĞĞŸÑ‹Ñ”ÑƒĞˆÂ¬ĞĞ”Ñ˜ÑĞšÑĞ‘Ñ—
 	dwAddress = pckAllInfo.dwAddressOfFilenameIndex;
 
 	WriteAllIndex(&cFileWriter, &pckAllInfo, dwAddress);

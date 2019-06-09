@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "PckClassHeadTailWriter.h"
 #include "PckClassIndexWriter.h"
 #include "PckClassThread.h"
@@ -13,7 +13,7 @@ public:
 	CPckClassWriteOperator();
 	~CPckClassWriteOperator();
 
-	//ÖØ½¨pckÎÄ¼ş
+	//Ğ¦Ğ¨Ğ…ĞpckĞĞ”Ñ˜Ñ
 	virtual BOOL	RebuildPckFile(LPCTSTR lpszScriptFile, LPCTSTR szRebuildPckFile, BOOL bUseRecompress);
 
 protected:
@@ -21,19 +21,19 @@ protected:
 	BOOL	RecompressPckFile(LPCTSTR szRecompressPckFile, int isStripMode = PCK_STRIP_NONE);
 
 public:
-#pragma region ÓÎÏ·¾«¼ò
+#pragma region æ¸¸æˆç²¾ç®€
 	virtual BOOL	StripPck(LPCTSTR lpszStripedPckFile, int flag);
 #pragma endregion
 
 #pragma region PckClassAppendFiles.cpp
 public:
-	//ĞÂ½¨¡¢¸üĞÂpckÎÄ¼ş
+	//Ğ Ğ’Ğ…ĞĞÑÑ‘ÑŒĞ Ğ’pckĞĞ”Ñ˜Ñ
 	virtual BOOL	UpdatePckFile(LPCTSTR szPckFile, const vector<tstring> &lpszFilePath, const PCK_PATH_NODE* lpNodeToInsert);
 #pragma endregion
 #pragma region PckClassRenamer.cpp
 
 public:
-	//ÖØÃüÃûÎÄ¼ş
+	//Ğ¦Ğ¨Ğ“ÑŒĞ“Ñ‹ĞĞ”Ñ˜Ñ
 	virtual BOOL	RenameFilename();
 
 #pragma endregion

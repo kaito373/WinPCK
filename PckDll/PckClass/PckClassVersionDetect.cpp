@@ -114,17 +114,17 @@ CPckClassVersionDetect::~CPckClassVersionDetect()
 
 const PCK_VERSION_ID CPckClassVersionDetect::cPckIDs[] = 
 {
-	{ PCK_VERSION_ZX,		TEXT("诛仙"),			PCK_V2020, AFPCK_VERSION_202, 0 },
-	{ PCK_VERSION_ZXNEW,	TEXT("诛仙(新)"),		PCK_V2030, AFPCK_VERSION_203, 0 },
-	{ PCK_VERSION_SDS,		TEXT("圣斗士"),			PCK_V2020, AFPCK_VERSION_202, 161 },
-	{ PCK_VERSION_SDSNEW,	TEXT("圣斗士(新)"),		PCK_V2030, AFPCK_VERSION_203, 161 },
-	{ PCK_VERSION_SM,		TEXT("神魔"),			PCK_V2020, AFPCK_VERSION_202, 131 },
-	{ PCK_VERSION_SMNEW,	TEXT("神魔(新)"),		PCK_V2030, AFPCK_VERSION_203, 131 },
+	{ PCK_VERSION_ZX,		TEXT("Jade Dynasty"),			PCK_V2020, AFPCK_VERSION_202, 0 },
+	{ PCK_VERSION_ZXNEW,	TEXT("Jade Dynasty(New)"),		PCK_V2030, AFPCK_VERSION_203, 0 },
+	{ PCK_VERSION_SDS,		TEXT("Perfect World"),			PCK_V2020, AFPCK_VERSION_202, 161 },
+	{ PCK_VERSION_SDSNEW,	TEXT("Perfect World(New)"),		PCK_V2030, AFPCK_VERSION_203, 161 },
+	{ PCK_VERSION_SM,		TEXT("Forsaken World"),			PCK_V2020, AFPCK_VERSION_202, 131 },
+	{ PCK_VERSION_SMNEW,	TEXT("Forsaken World(New)"),		PCK_V2030, AFPCK_VERSION_203, 131 },
 #ifndef _DEBUG
-	{ PCK_VERSION_KDXY,		TEXT("口袋西游"),		PCK_V2020, AFPCK_VERSION_202, 121 },
-	{ PCK_VERSION_KDXYNEW,	TEXT("口袋西游(新)"),	PCK_V2030, AFPCK_VERSION_203, 121 },
-	{ PCK_VERSION_RWPD,		TEXT("热舞派对"),		PCK_V2020, AFPCK_VERSION_202, 111 },
-	{ PCK_VERSION_RWPDNEW,	TEXT("热舞派对(新)"),	PCK_V2030, AFPCK_VERSION_203, 111 },
+	{ PCK_VERSION_KDXY,		TEXT("Ether Saga Odyssey"),		PCK_V2020, AFPCK_VERSION_202, 121 },
+	{ PCK_VERSION_KDXYNEW,	TEXT("Ether Saga Odyssey(New)"),	PCK_V2030, AFPCK_VERSION_203, 121 },
+	{ PCK_VERSION_RWPD,		TEXT("RWPD"),		PCK_V2020, AFPCK_VERSION_202, 111 },
+	{ PCK_VERSION_RWPDNEW,	TEXT("RWPD(New)"),	PCK_V2030, AFPCK_VERSION_203, 111 },
 #endif
 	PCK_VERSION_INVALID,
 };
@@ -133,7 +133,7 @@ const PCK_KEYS CPckClassVersionDetect::cPckSPKeys[] =
 /*		ID				名称				版本ID		版本值	0xAAAAAAAA	0xBBBBBBBB	0xCCCCCCCC	0xDDDDDDDDEEEEEEEE	0xFFFFFFFF	0xGGGGGGGG	0xHHHHHHHH	分块大小
 		id				name				VersionId	Version	HeadVerifyKey1			TailVerifyKey1					TailVerifyKey2			IndexCompressedFilenameDataLengthCryptKey2
 																			HeadVerifyKey2			IndexesEntryAddressCryptKey		IndexCompressedFilenameDataLengthCryptKey1*/
-{ { PCK_VERSION_XAJH,	TEXT("笑傲江湖"),	PCK_VXAJH, AFPCK_VERSION_203, 0x5edb34f0, 0x00000000, 0x7b2a7820, 0x49ab7f1d33c3eddb, 0xa75dc142, 0x62a4f9e1, 0x3520c3d5, 0xffffff00 },
+{ { PCK_VERSION_XAJH,	TEXT("Swordsman"),	PCK_VXAJH, AFPCK_VERSION_203, 0x5edb34f0, 0x00000000, 0x7b2a7820, 0x49ab7f1d33c3eddb, 0xa75dc142, 0x62a4f9e1, 0x3520c3d5, 0xffffff00 },
 };
 
 #define PCK_VER_FUNC_LINE(_id, _head_ver, _tail_ver, _index_ver) \
@@ -190,7 +190,7 @@ int CPckClassVersionDetect::FillUnknownVersionInfo(DWORD AlgorithmId, DWORD Vers
 		LPPCK_KEYS lpUnknownPckKeys = &cPckVersionFuncToAdd.cPckXorKeys;
 		LPPCK_VERSION_FUNC lpUnknownPckVersionFunc = &cPckVersionFuncToAdd;
 		lpUnknownPckKeys->id = cPckVersionFunc.size();
-		_stprintf_s(lpUnknownPckKeys->name, TEXT("识别的未知格式(ver=0x%x id=%d)"), Version, AlgorithmId);
+		_stprintf_s(lpUnknownPckKeys->name, TEXT("Unknown format identified(ver=0x%x id=%d)"), Version, AlgorithmId);
 		lpUnknownPckKeys->CategoryId = AFPCK_VERSION_202 == Version ? PCK_V2020 : PCK_V2030;
 		lpUnknownPckKeys->Version = Version;
 
@@ -317,7 +317,7 @@ void CPckClassVersionDetect::PrintInvalidVersionDebugInfo(LPCTSTR lpszPckFile)
 
 		CRaw2HexString cHexStr(buf, lpRead->GetFileSize());
 
-		sprintf_s(szPrintf, "文件信息：\n文件大小：%lld\n文件概要数据：\n", lpRead->GetFileSize());
+		sprintf_s(szPrintf, "File information：\nFile size：%lld\nFile summary data：\n", lpRead->GetFileSize());
 		strcat_s(szPrintf, cHexStr.GetHexString());
 
 
@@ -342,7 +342,7 @@ void CPckClassVersionDetect::PrintInvalidVersionDebugInfo(LPCTSTR lpszPckFile)
 		CRaw2HexString cHexStrHead(buf, PRINT_HEAD_SIZE);
 		CRaw2HexString cHexStrTail(buf + PRINT_HEAD_SIZE, qwBytesToRead, qwWhereToMove);
 
-		sprintf_s(szPrintf, "文件信息：\n文件大小：%lld\n文件概要数据：\n", lpRead->GetFileSize());
+		sprintf_s(szPrintf, "File information：\nFile size:%lld\nFile summary data：\n", lpRead->GetFileSize());
 #if _DEBUG
 		size_t len1 = strlen(cHexStrHead.GetHexString());
 		size_t len2 = strlen(cHexStrTail.GetHexString());

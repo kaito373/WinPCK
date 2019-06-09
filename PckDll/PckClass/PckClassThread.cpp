@@ -1,4 +1,4 @@
-
+ï»¿
 #include "PckClassThread.h"
 
 CPckClassThreadWorker::CPckClassThreadWorker()
@@ -22,7 +22,7 @@ BOOL CPckClassThreadWorker::CheckIfNeedForcedStopWorking()
 
 BOOL CPckClassThreadWorker::initMultiThreadVars(CMapViewFileMultiPckWrite *lpFileWriter)
 {
-	//¶àÏß³ÌÊ¹ÓÃ²ÎÊý³õÊ¼»¯
+	//Â¶Ð°ÐŸÐ¯Ñ–ÐœÐšâ„–Ð£Ð“Ð†ÐžÐšÑÑ–Ñ…ÐšÑ˜Â»Ð‡
 	SetThreadFlag(TRUE);
 	mt_lpFileWrite = lpFileWriter;
 	mt_evtAllWriteFinish = CreateEventA(NULL, FALSE, FALSE, m_szEventAllWriteFinish);
@@ -52,9 +52,9 @@ void CPckClassThreadWorker::ExecuteMainThreadGroup(PCK_ALL_INFOS &pckAllInfo, in
 
 	::Sleep(100);
 	
-	//´ýÐ´Ïß³ÌÍê³É
+	//Ò‘ÑÐ Ò‘ÐŸÐ¯Ñ–ÐœÐÐºÑ–Ð™
 	AcquireSRWLockShared(&g_mt_LockThreadID);
-	//ÊÇ·ñÓÐ¿ÉÄÜmt_threadID»¹Ã»¿ªÊ¼¼ÓÒÑ¾­µ½ÕâÀïÁË
+	//ÐšÐ—Â·ÑÐ£Ð Ñ—Ð™Ð”Ð¬mt_threadIDÂ»â„–Ð“Â»Ñ—Ð„ÐšÑ˜Ñ˜Ð£Ð¢Ð¡Ñ•Â­ÂµÐ…Ð¥Ð²ÐÐ¿Ð‘Ð›
 	while(0 != mt_threadID) {
 		logOutput(__FUNCTION__ "_Sleep", "SleepConditionVariableSRW, %d\r\n", mt_threadID);
 		SleepConditionVariableSRW(&m_cvReadThreadComplete, &g_mt_LockThreadID, INFINITE, CONDITION_VARIABLE_LOCKMODE_SHARED);
@@ -98,7 +98,7 @@ VOID CPckClassThreadWorker::WriteThread(VOID* pParam)
 
 		QWORD dwAddress = lpPckIndexTableComp.dwAddressFileDataToWrite;
 
-		//´¦ÀílpPckFileIndex->dwAddressOffset
+		//Ò‘Â¦ÐÐ½lpPckFileIndex->dwAddressOffset
 		if(0 != lpPckIndexTableComp.dwCompressedFilesize) {
 
 			if (!mt_lpFileWrite->Write2(dwAddress, dataToWrite, lpPckIndexTableComp.dwCompressedFilesize)) {
@@ -123,7 +123,7 @@ VOID CPckClassThreadWorker::WriteThread(VOID* pParam)
 	mt_dwAddressQueue = dwAddressDataAreaEndAt;
 
 
-#pragma region Ð´Ïß³ÌÊ§°Ü´¦Àí
+#pragma region å†™çº¿ç¨‹å¤±è´¥å¤„ç†
 
 	if(!result) {
 
@@ -173,13 +173,13 @@ VOID CPckClassThreadWorker::CompressThread(VOID* pParam)
 	PCKINDEXTABLE		pckFileIndex = { 0 };
 	//FETCHDATA_RET		rtn_GetCompressData;
 
-	//È¡µÃÑ¹ËõºÃµÄÊý¾Ý
+	//Ð˜ÐŽÂµÐ“Ð¡â„–Ð›Ñ…Ñ”Ð“ÂµÐ”ÐšÑÑ•Ð­
 	while(FD_OK == (lpThreadParams->GetUncompressedData)(pThis, &lpThreadParams->cDataFetchMethod, pckFileIndex)) {
 
-		//´°¿ÚÖÐÒÔÏÔÊ¾µÄÎÄ¼þ½ø¶È
+		//Ò‘Â°Ñ—ÐªÐ¦Ð Ð¢Ð¤ÐŸÐ¤ÐšÑ•ÂµÐ”ÐžÐ”Ñ˜ÑŽÐ…ÑˆÂ¶Ð˜
 		pThis->SetParams_ProgressInc();
 
-		//·ÅÈë¶ÓÁÐ
+		//Â·Ð•Ð˜Ð»Â¶Ð£Ð‘Ð 
 		pThis->putCompressedDataQueue(pckFileIndex);
 
 	}

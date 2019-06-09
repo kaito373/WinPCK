@@ -1,7 +1,7 @@
-#include "PckClassThread.h"
+﻿#include "PckClassThread.h"
 #include "PckModelStrip.h"
 
-//�ڶ��߳������л�ȡδѹ���õ�Դ����
+//ФЪ¶аПЯіМФЛЛгЦР»сИЎОґС№ЛхєГµДФґКэѕЭ
 FETCHDATA_RET CPckClassThreadWorker::GetUncompressedDataFromFile(CPckClassThreadWorker *pThis, LPDATA_FETCH_METHOD lpDataFetchMethod, PCKINDEXTABLE &pckFileIndex)
 {
 
@@ -22,23 +22,23 @@ FETCHDATA_RET CPckClassThreadWorker::GetUncompressedDataFromFile(CPckClassThread
 		LPBYTE lpCompressedBuffer = (BYTE*)MALLOCED_EMPTY_DATA;
 		pckFileIndex.dwMallocSize = pThis->m_zlib.GetCompressBoundSizeByFileSize(pckFileIndex.cFileIndex.dwFileClearTextSize, pckFileIndex.cFileIndex.dwFileCipherTextSize, lpOneFile->dwFileSize);
 
-		//�����ļ���
+		//№№ЅЁОДјюГы
 		memcpy(mystrcpy(pckFileIndex.cFileIndex.szwFilename, lpDataFetchMethod->szCurrentNodeString), lpOneFile->szwFilename + lpOneFile->nFileTitleLen, lpOneFile->nBytesToCopy - lpDataFetchMethod->nCurrentNodeStringLen);
-		//Unicode�ļ���ת��ΪCP936��ANSI
+		//UnicodeОДјюГыЧЄ»»ОЄCP936µДANSI
 		CPckClassCodepage::PckFilenameCode2Ansi(pckFileIndex.cFileIndex.szwFilename, pckFileIndex.cFileIndex.szFilename, sizeof(pckFileIndex.cFileIndex.szwFilename));
 
-		//����ļ���СΪ0�����������ļ�����
+		//Из№ыОДјюґуРЎОЄ0Ј¬ФтМш№эґтїЄОДјюІЅЦи
 		if(0 != pckFileIndex.cFileIndex.dwFileClearTextSize) {
 			CMapViewFileRead		cFileRead;
 			LPBYTE					lpBufferToRead;
-			//�ļ���Ϊ0ʱ�Ĵ���
-			//��Ҫ����ѹ�����ļ�
+			//ОДјюІ»ОЄ0К±µДґ¦Ан
+			//ґтїЄТЄЅшРРС№ЛхµДОДјю
 			if(NULL == (lpBufferToRead = cFileRead.OpenMappingViewAllRead(lpOneFile->szwFilename))) {
 				pThis->SetErrMsgFlag(PCK_ERR_OPENMAPVIEWR);
 				return FD_ERR;
 			}
 
-			//�ж�ʹ�õ��ڴ��Ƿ񳬹����ֵ
+			//ЕР¶ПК№УГµДДЪґжКЗ·сі¬№эЧоґуЦµ
 			FETCHDATA_RET rtn;
 			if(FD_OK != (rtn = pThis->detectMaxAndAddMemory(lpCompressedBuffer, pckFileIndex.dwMallocSize))) {
 				return rtn;
@@ -85,9 +85,9 @@ FETCHDATA_RET CPckClassThreadWorker::GetUncompressedDataFromPCK(CPckClassThreadW
 			continue;
 
 		LPBYTE				lpBufferToRead;
-		//������ѹ�����ݵĽ�ѹ������
+		//±ЈґжЦШС№ЛхКэѕЭµДЅвС№µДКэѕЭ
 		LPBYTE				lpDecompressBuffer = NULL;
-		//������ѹ�����ݵ�Դ����
+		//±ЈґжЦШС№ЛхКэѕЭµДФґКэѕЭ
 		LPBYTE				lpSourceBuffer = NULL;
 
 		LPPCKINDEXTABLE	lpPckIndexTablePtrSrc = cDataFetchMethod.lpPckIndexTablePtrSrc;
@@ -108,15 +108,15 @@ FETCHDATA_RET CPckClassThreadWorker::GetUncompressedDataFromPCK(CPckClassThreadW
 
 		if(0 != dwFileClearTextSize) {
 
-			//�ж�ʹ�õ��ڴ��Ƿ񳬹����ֵ
+			//ЕР¶ПК№УГµДДЪґжКЗ·сі¬№эЧоґуЦµ
 			FETCHDATA_RET rtn;
 			if(FD_OK != (rtn = pThis->detectMaxAndAddMemory(lpCompressedBuffer, pckFileIndex.dwMallocSize))) {
 				return rtn;
 			}
 
-			//�ļ�������Ҫ��ѹ��
+			//ОДјюКэѕЭРиТЄЦШС№Лх
 			if(PCK_BEGINCOMPRESS_SIZE < dwFileClearTextSize) {
-				//����Դ���ݵĿռ�
+				//±ЈґжФґКэѕЭµДїХјд
 				if(FD_OK != (rtn = pThis->detectMaxAndAddMemory(lpSourceBuffer, dwNumberOfBytesToMap))) {
 					return rtn;
 				}
@@ -146,7 +146,7 @@ FETCHDATA_RET CPckClassThreadWorker::GetUncompressedDataFromPCK(CPckClassThreadW
 					if (dwFileClearTextSize == lpPckIndexTablePtrSrc->cFileIndex.dwFileClearTextSize) {
 
 						/*
-						��������뾫�����
+						ФЪХвАпјУИлѕ«јтґъВл
 						*/
 						if (PCK_STRIP_NONE != cDataFetchMethod.iStripFlag) {
 							CPckModelStrip cModelStrip;
@@ -171,7 +171,7 @@ FETCHDATA_RET CPckClassThreadWorker::GetUncompressedDataFromPCK(CPckClassThreadW
 
 
 			} else {
-#pragma region �ļ���С����Ҫѹ��ʱ
+#pragma region 文件过小不需要压缩时
 				AcquireSRWLockExclusive(&g_mt_LockReadFileMap);
 				if(NULL == (lpBufferToRead = cDataFetchMethod.lpFileReadPCK->View(lpPckIndexTablePtrSrc->cFileIndex.dwAddressOffset, dwNumberOfBytesToMap))) {
 					ReleaseSRWLockExclusive(&g_mt_LockReadFileMap);
