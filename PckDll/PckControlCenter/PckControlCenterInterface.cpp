@@ -1,11 +1,11 @@
-
+Ôªø
 //////////////////////////////////////////////////////////////////////
-// PckControlCenterInterface.cpp: ”√”⁄Ω‚ŒˆÕÍ√¿ ¿ΩÁπ´ÀæµƒpckŒƒº˛÷–µƒ ˝æ›£¨≤¢œ‘ æ‘⁄List÷–
-// Õ∑Œƒº˛,ΩÁ√Ê”ÎPCK¿‡µƒ ˝æ›Ωªª•£¨øÿ÷∆÷––ƒ£¨»’÷æπ¶ƒ‹
+// PckControlCenterInterface.cpp: –£–ì–£–™–Ö–≤–û—Ü–ù–∫–ì–ê–ö–ê–Ö–∑‚Ññ¬´–õ—ï¬µ–îpck–û–î—ò—é–¶–†¬µ–î–ö—ç—ï–≠–à¬¨–Ü—û–ü–§–ö—ï–§–™List–¶–†
+// –ù¬∑–û–î—ò—é,–Ö–∑–ì–∂–£–ªPCK–ê–∞¬µ–î–ö—ç—ï–≠–Ö¬ª¬ª“ê–à¬¨—ó–®–¶–ñ–¶–†–†–î–à¬¨–ò–•–¶—ï‚Ññ¬¶–î–¨
 //
-// ¥À≥Ã–Ú”… ¿Ó«Ô∑„/stsm/liqf ±‡–¥
+// “ë–õ—ñ–ú–†—Ç–£–ô –ê–æ–ó–ø¬∑–≥/stsm/liqf ¬±–∞–†“ë
 //
-// ¥À¥˙¬Î‘§º∆Ω´ª·ø™‘¥£¨»Œ∫Œª˘”⁄¥À¥˙¬Îµƒ–ﬁ∏ƒ∑¢≤º«Î±£¡Ù‘≠◊˜’ﬂ–≈œ¢
+// “ë–õ“ë—ä–í–ª–§¬§—ò–ñ–Ö¬´¬ª–±—ó–Ñ–§“ë–à¬¨–ò–û—î–û¬ª—â–£–™“ë–õ“ë—ä–í–ª¬µ–î–†–Æ—ë–î¬∑—û–Ü—ò–ó–ª¬±–à–ë—Ñ–§¬≠–ß—á–•–Ø–†–ï–ü—û
 // 
 // 2015.5.19
 //////////////////////////////////////////////////////////////////////
@@ -13,7 +13,7 @@
 #include "PckControlCenter.h"
 #include "PckClass.h"
 
-#pragma region Œƒº˛¥Úø™πÿ±’–≈œ¢ΩÁ√ÊΩªª•
+#pragma region Êñá‰ª∂ÊâìÂºÄÂÖ≥Èó≠‰ø°ÊÅØÁïåÈù¢‰∫§‰∫í
 
 FeedbackCallback CPckControlCenter::pFeedbackCallBack = DefaultFeedbackCallback;
 void* CPckControlCenter::pTag = NULL;
@@ -54,7 +54,7 @@ int CPckControlCenter::DefaultFeedbackCallback(void* pTag, int eventId, WPARAM w
 
 #pragma endregion
 
-#pragma region ≤È—Øº∞ƒø¬º‰Ø¿¿
+#pragma region Êü•ËØ¢ÂèäÁõÆÂΩïÊµèËßà
 
 void CPckControlCenter::DefaultShowFilelistCallback(void* _in_param, int sn, LPCWSTR lpszFilename, int entry_type, unsigned __int64 qwFileSize, unsigned __int64 qwFileSizeCompressed, void* fileEntry)
 {
@@ -124,7 +124,7 @@ DWORD CPckControlCenter::SearchByName(LPCWSTR lpszSearchString, void* _in_param,
 	DWORD	dwFileCount = GetPckFileCount(), dwFoundCount = 0;
 	const PCKINDEXTABLE	* lpPckIndexTable = m_lpClassPck->GetPckIndexTable();
 
-	//¥Ú”°∂•≤„
+	//“ë—Ç–£–é¬∂“ê–Ü–≥
 	_showList(_in_param,
 		dwFoundCount++,
 		L"<--",
@@ -163,11 +163,11 @@ DWORD CPckControlCenter::ListByNode(LPCENTRY lpFileEntry, void* _in_param, SHOW_
 		_showList = DefaultShowFilelistCallback;
 	}
 
-	//»Áπ˚ «..Œƒº˛º–£¨æÕœ‘ æ…œ“ª≤„£¨≤ª «æÕœ‘ æœ¬“ª≤„
+	//–ò–∑‚Ññ—ã–ö–ó..–û–î—ò—é—ò–†–à¬¨—ï–ù–ü–§–ö—ï–ô–ü–¢¬ª–Ü–≥–à¬¨–Ü¬ª–ö–ó—ï–ù–ü–§–ö—ï–ü–í–¢¬ª–Ü–≥
 	const PCK_PATH_NODE* lpNodeToShow = (LPPCK_PATH_NODE)lpFileEntry;
 
 	int entry_type = lpFileEntry->entryType;
-	// ◊œ»“™ «Œƒº˛º–
+	//–ö–ß–ü–ò–¢–Ñ–ö–ó–û–î—ò—é—ò–†
 	if (PCK_ENTRY_TYPE_FOLDER != (PCK_ENTRY_TYPE_FOLDER & entry_type)) {
 #if _DEBUG
 		printf("%s:is not a folder\n", __FUNCTION__);
@@ -175,17 +175,17 @@ DWORD CPckControlCenter::ListByNode(LPCENTRY lpFileEntry, void* _in_param, SHOW_
 		return 0;
 	}
 
-	//Ω¯»Î∑«..Œƒº˛º–
+	//–Ö—à–ò–ª¬∑–ó..–û–î—ò—é—ò–†
 	if (PCK_ENTRY_TYPE_DOTDOT != (PCK_ENTRY_TYPE_DOTDOT & entry_type)){
 
 		lpNodeToShow = ((LPPCK_PATH_NODE)lpFileEntry)->child;
 
-	}// £œ¬µƒ «..Œƒº˛º–
+	}//–ö–à–ü–í¬µ–î–ö–ó..–û–î—ò—é—ò–†
 	else {
 		lpNodeToShow = ((LPPCK_PATH_NODE)lpFileEntry)->parentfirst;
 	}
 
-	//lpNodeToShow «∑ÒŒ™NULL
+	//lpNodeToShow–ö–ó¬∑—Å–û–ÑNULL
 	if (NULL == lpNodeToShow) {
 #if _DEBUG
 		printf("%s:lpNodeToShow is NULL\n", __FUNCTION__);
@@ -198,7 +198,7 @@ DWORD CPckControlCenter::ListByNode(LPCENTRY lpFileEntry, void* _in_param, SHOW_
 	const PCK_PATH_NODE* lpNodeToShowPtr = lpNodeToShow;
 
 	while (NULL != lpNodeToShowPtr && 0 != *lpNodeToShowPtr->szName) {
-		//’‚¿Ôœ»œ‘ æŒƒº˛º–
+		//–•–≤–ê–ø–ü–ò–ü–§–ö—ï–û–î—ò—é—ò–†
 		int entryType = lpNodeToShowPtr->entryType;
 		if ((PCK_ENTRY_TYPE_FOLDER == (PCK_ENTRY_TYPE_FOLDER & entryType))) {
 

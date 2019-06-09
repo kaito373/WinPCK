@@ -1,11 +1,11 @@
-//////////////////////////////////////////////////////////////////////
-// CPckControlCenter.h: ÓÃÓÚ½âÎöÍêÃÀÊÀ½ç¹«Ë¾µÄpckÎÄ¼şÖĞµÄÊı¾İ£¬²¢ÏÔÊ¾ÔÚListÖĞ
-// Í·ÎÄ¼ş,½çÃæÓëPCKÀàµÄÊı¾İ½»»¥£¬¿ØÖÆÖĞĞÄ
+ï»¿//////////////////////////////////////////////////////////////////////
+// CPckControlCenter.h: Ğ£Ğ“Ğ£ĞªĞ…Ğ²ĞÑ†ĞĞºĞ“ĞĞšĞĞ…Ğ·â„–Â«Ğ›Ñ•ÂµĞ”pckĞĞ”Ñ˜ÑĞ¦Ğ ÂµĞ”ĞšÑÑ•Ğ­ĞˆÂ¬Ğ†ÑĞŸĞ¤ĞšÑ•Ğ¤ĞªListĞ¦Ğ 
+// ĞÂ·ĞĞ”Ñ˜Ñ,Ğ…Ğ·Ğ“Ğ¶Ğ£Ğ»PCKĞĞ°ÂµĞ”ĞšÑÑ•Ğ­Ğ…Â»Â»ÒĞˆÂ¬Ñ—Ğ¨Ğ¦Ğ–Ğ¦Ğ Ğ Ğ”
 //
-// ´Ë³ÌĞòÓÉ ÀîÇï·ã/stsm/liqf ±àĞ´£¬pck½á¹¹²Î¿¼ÈôË®µÄpck½á¹¹.txt£¬²¢
-// ²Î¿¼ÁËÆäÒ×ÓïÑÔ´úÂëÖĞ²¢ÓÚ¶ÁpckÎÄ¼şÁĞ±íµÄ²¿·Ö
+// Ò‘Ğ›Ñ–ĞœĞ Ñ‚Ğ£Ğ™ ĞĞ¾Ğ—Ğ¿Â·Ğ³/stsm/liqf Â±Ğ°Ğ Ò‘ĞˆÂ¬pckĞ…Ğ±â„–â„–Ğ†ĞÑ—Ñ˜Ğ˜Ñ„Ğ›Â®ÂµĞ”pckĞ…Ğ±â„–â„–.txtĞˆÂ¬Ğ†Ñ
+// Ğ†ĞÑ—Ñ˜Ğ‘Ğ›Ğ–Ğ´Ğ¢Ğ§Ğ£Ğ¿Ğ¡Ğ¤Ò‘ÑŠĞ’Ğ»Ğ¦Ğ Ğ†ÑĞ£ĞªÂ¶Ğ‘pckĞĞ”Ñ˜ÑĞ‘Ğ Â±Ğ½ÂµĞ”Ğ†Ñ—Â·Ğ¦
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄĞŞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßĞÅÏ¢
+// Ò‘Ğ›Ò‘ÑŠĞ’Ğ»Ğ¤Â¤Ñ˜Ğ–Ğ…Â«Â»Ğ±Ñ—Ğ„Ğ¤Ò‘ĞˆÂ¬Ğ˜ĞÑ”ĞÂ»Ñ‰Ğ£ĞªÒ‘Ğ›Ò‘ÑŠĞ’Ğ»ÂµĞ”Ğ Ğ®Ñ‘Ğ”Â·ÑĞ†Ñ˜Ğ—Ğ»Â±ĞˆĞ‘Ñ„Ğ¤Â­Ğ§Ñ‡Ğ¥Ğ¯Ğ Ğ•ĞŸÑ
 // 
 // 2012.10.10
 //////////////////////////////////////////////////////////////////////
@@ -34,7 +34,7 @@ class CPckClassLog;
 
 class EXPORT_CLASS CPckControlCenter
 {
-	//º¯Êı
+	//Ñ”Ğ‡ĞšÑ
 public:
 	CPckControlCenter();
 	virtual ~CPckControlCenter();
@@ -46,7 +46,7 @@ private:
 	void	init();
 	void	uninit();
 	void	Reset(DWORD dwUIProgressUpper = 1);
-#pragma region ´ò¿ª¹Ø±ÕÎÄ¼ş
+#pragma region æ‰“å¼€å…³é—­æ–‡ä»¶
 
 	//BOOL	Open(LPCTSTR lpszFile, BOOL isOpenAfterRestore);
 	void	Close();
@@ -56,34 +56,34 @@ public:
 
 #pragma endregion
 
-#pragma region ÖØÃüÃû½Úµã
+#pragma region Ğ¦Ğ¨Ğ“ÑŒĞ“Ñ‹Ğ…ĞªÂµĞ³
 
-	//ÖØÃüÃûÒ»¸ö½Úµã
+	//Ğ¦Ğ¨Ğ“ÑŒĞ“Ñ‹Ğ¢Â»Ñ‘Ñ†Ğ…ĞªÂµĞ³
 	BOOL	RenameEntry(LPENTRY lpFileEntry, LPCWSTR lpszReplaceString);
-	//Ìá½»
+	//ĞœĞ±Ğ…Â»
 	BOOL	RenameSubmit();
 
 #pragma endregion
 
-#pragma region Ô¤ÀÀ½âÑ¹ÎÄ¼ş
+#pragma region é¢„è§ˆè§£å‹æ–‡ä»¶
 
-	//Ô¤ÀÀÎÄ¼ş
+	//Ğ¤Â¤ĞĞĞĞ”Ñ˜Ñ
 	BOOL		GetSingleFileData(LPCENTRY lpFileEntry, char *buffer, size_t sizeOfBuffer = 0);
 
-	//½âÑ¹ÎÄ¼ş
+	//Ğ…Ğ²Ğ¡â„–ĞĞ”Ñ˜Ñ
 	BOOL		ExtractFiles(const PCK_UNIFIED_FILE_ENTRY **lpFileEntryArray, int nEntryCount, LPCWSTR lpszDestDirectory);
 	BOOL		ExtractAllFiles(LPCWSTR lpszDestDirectory);
 
 #pragma endregion
 
-#pragma region ÖØ½¨pckÎÄ¼ş
-	//ÖØ½¨pckÎÄ¼ş
+#pragma region Ğ¦Ğ¨Ğ…ĞpckĞĞ”Ñ˜Ñ
+	//Ğ¦Ğ¨Ğ…ĞpckĞĞ”Ñ˜Ñ
 	BOOL	TestScript(LPCWSTR lpszScriptFile);
 	BOOL	RebuildPckFile(LPCWSTR lpszScriptFile, LPCWSTR szRebuildPckFile, BOOL bUseRecompress);
 
 #pragma endregion
 
-#pragma region ÓÎÏ·¾«¼ò
+#pragma region æ¸¸æˆç²¾ç®€
 	BOOL	StripPck(LPCWSTR lpszStripedPckFile, int flag);
 #pragma endregion
 
@@ -91,27 +91,27 @@ public:
 
 #pragma region create or update pck file
 
-	//¶à¸öÎÄ¼şÁĞ±í½øĞĞÑ¹ËõÊ±Ê¹ÓÃµÄvector²Ù×÷
+	//Â¶Ğ°Ñ‘Ñ†ĞĞ”Ñ˜ÑĞ‘Ğ Â±Ğ½Ğ…ÑˆĞ Ğ Ğ¡â„–Ğ›Ñ…ĞšÂ±Ğšâ„–Ğ£Ğ“ÂµĞ”vectorĞ†Ğ©Ğ§Ñ‡
 	void	StringArrayReset();
 	void	StringArrayAppend(LPCWSTR lpszFilePath);
 	BOOL	UpdatePckFileSubmit(LPCWSTR szPckFile, LPCENTRY lpFileEntry);
 
 #pragma endregion
 
-#pragma region É¾³ı½Úµã
-	//É¾³ıÒ»¸ö½Úµã
+#pragma region Ğ™Ñ•Ñ–ÑĞ…ĞªÂµĞ³
+	//Ğ™Ñ•Ñ–ÑĞ¢Â»Ñ‘Ñ†Ğ…ĞªÂµĞ³
 	BOOL	DeleteEntry(LPCENTRY lpFileEntry);
-	//Ìá½»
+	//ĞœĞ±Ğ…Â»
 	BOOL	DeleteEntrySubmit();
 
 #pragma endregion
 
 
-#pragma region °æ±¾Ïà¹Ø
+#pragma region ç‰ˆæœ¬ç›¸å…³
 
 	int		GetPckVersion();
 	BOOL	SetPckVersion(int verID);
-	//»ñÈ¡µ±Ç°ÅäÖÃÃû³Æ
+	//Â»ÑĞ˜ĞÂµÂ±Ğ—Â°Ğ•Ğ´Ğ¦Ğ“Ğ“Ñ‹Ñ–Ğ–
 	LPCWSTR	GetCurrentVersionName();
 	static DWORD	GetVersionCount();
 	static LPCWSTR	GetVersionNameById(int verID);
@@ -119,21 +119,21 @@ public:
 
 #pragma endregion
 
-#pragma region ½ÚµãÊôĞÔ²Ù×÷
+#pragma region Ğ…ĞªÂµĞ³ĞšÑ„Ğ Ğ¤Ğ†Ğ©Ğ§Ñ‡
 
 	LPCENTRY GetRootNode();
-	//»ñÈ¡nodeÂ·¾¶
+	//Â»ÑĞ˜ĞnodeĞ’Â·Ñ•Â¶
 	static BOOL			GetCurrentNodeString(LPWSTR szCurrentNodePathString, LPCENTRY lpFileEntry);
 	LPCENTRY			GetFileEntryByPath(LPCWSTR _in_szCurrentNodePathString);
 #pragma endregion
 
-#pragma region pckÎÄ¼şÊôĞÔ
+#pragma region pckĞĞ”Ñ˜ÑĞšÑ„Ğ Ğ¤
 
 	BOOL				IsValidPck();
 
-	//»ñÈ¡ÎÄ¼şÊı
+	//Â»ÑĞ˜ĞĞĞ”Ñ˜ÑĞšÑ
 	DWORD				GetPckFileCount();
-	//Êµ¼ÊÎÄ¼ş´óĞ¡
+	//ĞšÂµÑ˜ĞšĞĞ”Ñ˜ÑÒ‘ÑƒĞ Ğ
 	QWORD				GetPckSize();
 	QWORD				GetPckDataAreaSize();
 	QWORD				GetPckRedundancyDataSize();
@@ -148,21 +148,21 @@ public:
 
 	static QWORD		GetFileOffset(LPCENTRY lpFileEntry);
 
-	//ÉèÖÃ¸½¼ÓĞÅÏ¢
+	//Ğ™Ğ¸Ğ¦Ğ“Ñ‘Ğ…Ñ˜Ğ£Ğ Ğ•ĞŸÑ
 	const char*			GetAdditionalInfo();
 	static DWORD		GetAdditionalInfoMaxSize();
 	BOOL				SetAdditionalInfo(LPCSTR lpszAdditionalInfo);
 
-	//ÊÇ·ñÊÇÖ§³Ö¸üĞÂµÄÎÄ¼ş
+	//ĞšĞ—Â·ÑĞšĞ—Ğ¦Â§Ñ–Ğ¦Ñ‘ÑŒĞ Ğ’ÂµĞ”ĞĞ”Ñ˜Ñ
 	BOOL				isSupportAddFileToPck();
 
 #pragma endregion
 
-	//´ò¿ª¡¢¹Ø±Õ¡¢¸´Ô­µÈÊÂ¼ş×¢²á
+	//Ò‘Ñ‚Ñ—Ğ„ĞÑâ„–Ğ¨Â±Ğ¥ĞÑÑ‘Ò‘Ğ¤Â­ÂµĞ˜ĞšĞ’Ñ˜ÑĞ§ÑĞ†Ğ±
 	static void		regMsgFeedback(void* pTag, FeedbackCallback _FeedbackCallBack);
 	static int		DefaultFeedbackCallback(void* pTag, int eventId, WPARAM wParam, LPARAM lParam);
 
-#pragma region ²éÑ¯¼°Ä¿Â¼ä¯ÀÀ
+#pragma region æŸ¥è¯¢åŠç›®å½•æµè§ˆ
 private:
 	static void		DefaultShowFilelistCallback(void* _in_param, int sn, LPCWSTR lpszFilename, int entry_type, unsigned __int64 qwFileSize, unsigned __int64 qwFileSizeCompressed, void* fileEntry);
 
@@ -172,8 +172,8 @@ public:
 
 #pragma endregion
 
-#pragma region Ïß³Ì¿ØÖÆ
-	//Ïß³ÌÔËĞĞ²ÎÊı
+#pragma region ĞŸĞ¯Ñ–ĞœÑ—Ğ¨Ğ¦Ğ–
+	//ĞŸĞ¯Ñ–ĞœĞ¤Ğ›Ğ Ğ Ğ†ĞĞšÑ
 	BOOL			isThreadWorking();
 	void			ForceBreakThreadWorking();
 #pragma endregion
@@ -182,38 +182,38 @@ public:
 	int				GetLastErrorMsg();
 	BOOL			isLastOptSuccess();
 
-#pragma region ÄÚ´æÕ¼ÓÃ
-	//ÄÚ´æÕ¼ÓÃ
+#pragma region Ğ”ĞªÒ‘Ğ¶Ğ¥Ñ˜Ğ£Ğ“
+	//Ğ”ĞªÒ‘Ğ¶Ğ¥Ñ˜Ğ£Ğ“
 	DWORD			getMTMemoryUsed();
-	//ÄÚ´æÖµ
+	//Ğ”ĞªÒ‘Ğ¶Ğ¦Âµ
 	void			setMTMaxMemory(DWORD dwMTMaxMemory);
 	DWORD			getMTMaxMemory();
 
-	//×î´óÄÚ´æ
+	//Ğ§Ğ¾Ò‘ÑƒĞ”ĞªÒ‘Ğ¶
 	static DWORD	getMaxMemoryAllowed();
 
 #pragma endregion
 
-#pragma region Ïß³ÌÊı
-	//Ïß³ÌÊı
+#pragma region ĞŸĞ¯Ñ–ĞœĞšÑ
+	//ĞŸĞ¯Ñ–ĞœĞšÑ
 	DWORD	getMaxThread();
 	void	setMaxThread(DWORD dwThread);
-	//Ïß³ÌÄ¬ÈÏ²ÎÊı
+	//ĞŸĞ¯Ñ–ĞœĞ”Â¬Ğ˜ĞŸĞ†ĞĞšÑ
 	static DWORD	getMaxThreadUpperLimit();
 #pragma endregion
 
-#pragma region Ñ¹ËõµÈ¼¶
+#pragma region å‹ç¼©ç­‰çº§
 
-	//Ñ¹ËõµÈ¼¶
+	//Ğ¡â„–Ğ›Ñ…ÂµĞ˜Ñ˜Â¶
 	DWORD	getCompressLevel();
 	void	setCompressLevel(DWORD dwCompressLevel = Z_DEFAULT_COMPRESS_LEVEL);
 
-	//Ñ¹ËõµÈ¼¶Ä¬ÈÏ²ÎÊı
+	//Ğ¡â„–Ğ›Ñ…ÂµĞ˜Ñ˜Â¶Ğ”Â¬Ğ˜ĞŸĞ†ĞĞšÑ
 	static DWORD	getMaxCompressLevel();
 	static DWORD	getDefaultCompressLevel();
 #pragma endregion
 
-#pragma region ½ø¶ÈÏà¹Ø
+#pragma region è¿›åº¦ç›¸å…³
 
 	DWORD	getUIProgress();
 	void	setUIProgress(DWORD dwUIProgress);
@@ -222,7 +222,7 @@ public:
 #pragma endregion
 
 
-	//ÈÕÖ¾
+	//Ğ˜Ğ¥Ğ¦Ñ•
 	static void	regShowFunc(ShowLogW _ShowLogW);
 	static const char	getLogLevelPrefix(int _loglevel);
 	static void	Print(const char chLevel, LPCSTR _fmt, ...);
@@ -233,7 +233,7 @@ public:
 
 
 
-#pragma region ´òÓ¡Ìí¼Ó/ĞÂÔöÎÄ¼ş½á¹û
+#pragma region Ò‘Ñ‚Ğ£ĞĞœĞ½Ñ˜Ğ£/Ğ Ğ’Ğ¤Ñ†ĞĞ”Ñ˜ÑĞ…Ğ±â„–Ñ‹
 
 	DWORD	GetUpdateResult_OldFileCount();
 	DWORD	GetUpdateResult_PrepareToAddFileCount();
@@ -248,7 +248,7 @@ private:
 	FMTPCK	GetPckTypeFromFilename(LPCTSTR lpszFile);
 
 	LPPCK_PATH_NODE				m_lpPckRootNode;
-	vector<wstring>				lpszFilePathToAdd;	//¶ÔÌí¼Ó¶à¸öÎÄ¼şÊ±Ìá¹©Êı¾İ
+	vector<wstring>				lpszFilePathToAdd;	//Â¶Ğ¤ĞœĞ½Ñ˜Ğ£Â¶Ğ°Ñ‘Ñ†ĞĞ”Ñ˜ÑĞšÂ±ĞœĞ±â„–Â©ĞšÑÑ•Ğ­
 
 	wstring						szUpdateResultString;
 
@@ -256,7 +256,7 @@ private:
 	CPckClass					*m_lpClassPck;
 	CPckClassLog				*m_lpPckLog;
 
-	//¸ñÊ½
+	//Ñ‘ÑĞšĞ…
 	FMTPCK						m_emunFileFormat;
 
 	static FeedbackCallback		pFeedbackCallBack;

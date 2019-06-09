@@ -1,12 +1,12 @@
-
+ï»¿
 //////////////////////////////////////////////////////////////////////
-// PckControlCenterOperation.cpp: ÓÃÓÚ½âÎöÍêÃÀÊÀ½ç¹«Ë¾µÄpckÎÄ¼şÖĞµÄÊı¾İ£¬²¢ÏÔÊ¾ÔÚListÖĞ
-// Í·ÎÄ¼ş,½çÃæÓëPCKÀàµÄÊı¾İ½»»¥£¬¿ØÖÆÖĞĞÄ
+// PckControlCenterOperation.cpp: Ğ£Ğ“Ğ£ĞªĞ…Ğ²ĞÑ†ĞĞºĞ“ĞĞšĞĞ…Ğ·â„–Â«Ğ›Ñ•ÂµĞ”pckĞĞ”Ñ˜ÑĞ¦Ğ ÂµĞ”ĞšÑÑ•Ğ­ĞˆÂ¬Ğ†ÑĞŸĞ¤ĞšÑ•Ğ¤ĞªListĞ¦Ğ 
+// ĞÂ·ĞĞ”Ñ˜Ñ,Ğ…Ğ·Ğ“Ğ¶Ğ£Ğ»PCKĞĞ°ÂµĞ”ĞšÑÑ•Ğ­Ğ…Â»Â»ÒĞˆÂ¬Ñ—Ğ¨Ğ¦Ğ–Ğ¦Ğ Ğ Ğ”
 //
-// ´Ë³ÌĞòÓÉ ÀîÇï·ã/stsm/liqf ±àĞ´£¬pck½á¹¹²Î¿¼ÈôË®µÄpck½á¹¹.txt£¬²¢
-// ²Î¿¼ÁËÆäÒ×ÓïÑÔ´úÂëÖĞ²¢ÓÚ¶ÁpckÎÄ¼şÁĞ±íµÄ²¿·Ö
+// Ò‘Ğ›Ñ–ĞœĞ Ñ‚Ğ£Ğ™ ĞĞ¾Ğ—Ğ¿Â·Ğ³/stsm/liqf Â±Ğ°Ğ Ò‘ĞˆÂ¬pckĞ…Ğ±â„–â„–Ğ†ĞÑ—Ñ˜Ğ˜Ñ„Ğ›Â®ÂµĞ”pckĞ…Ğ±â„–â„–.txtĞˆÂ¬Ğ†Ñ
+// Ğ†ĞÑ—Ñ˜Ğ‘Ğ›Ğ–Ğ´Ğ¢Ğ§Ğ£Ğ¿Ğ¡Ğ¤Ò‘ÑŠĞ’Ğ»Ğ¦Ğ Ğ†ÑĞ£ĞªÂ¶Ğ‘pckĞĞ”Ñ˜ÑĞ‘Ğ Â±Ğ½ÂµĞ”Ğ†Ñ—Â·Ğ¦
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄĞŞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßĞÅÏ¢
+// Ò‘Ğ›Ò‘ÑŠĞ’Ğ»Ğ¤Â¤Ñ˜Ğ–Ğ…Â«Â»Ğ±Ñ—Ğ„Ğ¤Ò‘ĞˆÂ¬Ğ˜ĞÑ”ĞÂ»Ñ‰Ğ£ĞªÒ‘Ğ›Ò‘ÑŠĞ’Ğ»ÂµĞ”Ğ Ğ®Ñ‘Ğ”Â·ÑĞ†Ñ˜Ğ—Ğ»Â±ĞˆĞ‘Ñ„Ğ¤Â­Ğ§Ñ‡Ğ¥Ğ¯Ğ Ğ•ĞŸÑ
 // 
 // 2012.10.10
 //////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ void CPckControlCenter::New()
 	m_lpClassPck = new CPckClass(&cParams);
 }
 
-#pragma region ´ò¿ª¹Ø±ÕÎÄ¼ş
+#pragma region æ‰“å¼€å…³é—­æ–‡ä»¶
 
 FMTPCK	CPckControlCenter::GetPckTypeFromFilename(LPCTSTR lpszFile)
 {
@@ -40,7 +40,7 @@ FMTPCK	CPckControlCenter::GetPckTypeFromFilename(LPCTSTR lpszFile)
 
 BOOL CPckControlCenter::Open(LPCTSTR lpszFile)
 {
-	//ÅĞ¶ÏÎÄ¼ş¸ñÊ½
+	//Ğ•Ğ Â¶ĞŸĞĞ”Ñ˜ÑÑ‘ÑĞšĞ…
 	FMTPCK emunFileFormat = GetPckTypeFromFilename(lpszFile);
 
 	while(1) {
@@ -64,7 +64,7 @@ BOOL CPckControlCenter::Open(LPCTSTR lpszFile)
 
 			m_lpPckRootNode = m_lpClassPck->GetPckPathNode();
 
-			//´ò¿ª³É¹¦£¬Ë¢ĞÂ±êÌâ
+			//Ò‘Ñ‚Ñ—Ğ„Ñ–Ğ™â„–Â¦ĞˆÂ¬Ğ›ÑĞ Ğ’Â±ĞºĞœĞ²
 			pFeedbackCallBack(pTag, PCK_FILE_OPEN_SUCESS, NULL, (LPARAM)(m_lpClassPck->GetPckVersion()->name));
 			return TRUE;
 
@@ -90,16 +90,16 @@ void CPckControlCenter::Close()
 
 	m_emunFileFormat = FMTPCK_UNKNOWN;
 
-	//Çå¿Õ²ÎÊı
+	//Ğ—ĞµÑ—Ğ¥Ğ†ĞĞšÑ
 	Reset();
 
-	//¹Ø±ÕÎÄ¼ş£¬Ë¢ĞÂ±êÌâ
+	//â„–Ğ¨Â±Ğ¥ĞĞ”Ñ˜ÑĞˆÂ¬Ğ›ÑĞ Ğ’Â±ĞºĞœĞ²
 	pFeedbackCallBack(pTag, PCK_FILE_CLOSE, NULL, NULL);
 }
 
 #pragma endregion
 
-#pragma region ÖØÃüÃû½Úµã
+#pragma region Ğ¦Ğ¨Ğ“ÑŒĞ“Ñ‹Ğ…ĞªÂµĞ³
 
 BOOL CPckControlCenter::RenameEntry(LPENTRY lpFileEntry, LPCWSTR lpszReplaceString)
 {
@@ -133,9 +133,9 @@ BOOL CPckControlCenter::RenameSubmit()
 
 #pragma endregion
 
-#pragma region Ô¤ÀÀ½âÑ¹ÎÄ¼ş
+#pragma region é¢„è§ˆè§£å‹æ–‡ä»¶
 
-//Ô¤ÀÀÎÄ¼ş
+//Ğ¤Â¤ĞĞĞĞ”Ñ˜Ñ
 BOOL CPckControlCenter::GetSingleFileData(LPCENTRY lpFileEntry, char *buffer, size_t sizeOfBuffer)
 {
 	if ((NULL == m_lpClassPck) || (NULL == lpFileEntry))
@@ -150,7 +150,7 @@ BOOL CPckControlCenter::GetSingleFileData(LPCENTRY lpFileEntry, char *buffer, si
 	return m_lpClassPck->GetSingleFileData(lpPckFileIndexTable, buffer, sizeOfBuffer);
 }
 
-//½âÑ¹ÎÄ¼ş
+//Ğ…Ğ²Ğ¡â„–ĞĞ”Ñ˜Ñ
 BOOL CPckControlCenter::ExtractFiles(const PCK_UNIFIED_FILE_ENTRY **lpFileEntryArray, int nEntryCount, LPCWSTR lpszDestDirectory)
 {
 	if (NULL == m_lpClassPck)
@@ -168,8 +168,8 @@ BOOL CPckControlCenter::ExtractAllFiles(LPCWSTR lpszDestDirectory)
 }
 #pragma endregion
 
-#pragma region ÖØ½¨pckÎÄ¼ş
-//ÖØ½¨pckÎÄ¼ş
+#pragma region Ğ¦Ğ¨Ğ…ĞpckĞĞ”Ñ˜Ñ
+//Ğ¦Ğ¨Ğ…ĞpckĞĞ”Ñ˜Ñ
 BOOL CPckControlCenter::TestScript(LPCWSTR lpszScriptFile)
 {
 	CPckClassRebuildFilter cScriptFilter;
@@ -187,7 +187,7 @@ BOOL CPckControlCenter::RebuildPckFile(LPCWSTR lpszScriptFile, LPCWSTR szRebuild
 
 #pragma endregion
 
-#pragma region ÓÎÏ·¾«¼ò
+#pragma region æ¸¸æˆç²¾ç®€
 BOOL CPckControlCenter::StripPck(LPCWSTR lpszStripedPckFile, int flag)
 {
 	if (NULL == m_lpClassPck)
@@ -199,7 +199,7 @@ BOOL CPckControlCenter::StripPck(LPCWSTR lpszStripedPckFile, int flag)
 
 #pragma endregion
 
-#pragma region ¶à¸öÎÄ¼şÁĞ±í½øĞĞÑ¹ËõÊ±Ê¹ÓÃµÄvector²Ù×÷
+#pragma region å¤šä¸ªæ–‡ä»¶åˆ—è¡¨è¿›è¡Œå‹ç¼©æ—¶ä½¿ç”¨çš„vectoræ“ä½œ
 void CPckControlCenter::StringArrayReset()
 {
 	lpszFilePathToAdd.clear();
@@ -212,7 +212,7 @@ void CPckControlCenter::StringArrayAppend(LPCWSTR lpszFilePath)
 
 #pragma endregion
 
-#pragma region ĞÂ½¨/¸üĞÂpckÎÄ¼ş
+#pragma region Ğ Ğ’Ğ…Ğ/Ñ‘ÑŒĞ Ğ’pckĞĞ”Ñ˜Ñ
 
 BOOL CPckControlCenter::UpdatePckFileSubmit(LPCWSTR szPckFile, LPCENTRY lpFileEntry)
 {
@@ -270,8 +270,8 @@ BOOL CPckControlCenter::CreatePckFile(LPCTSTR lpszFilePathSrc, LPCTSTR szPckFile
 #endif
 #pragma endregion
 
-#pragma region É¾³ı½Úµã
-//É¾³ıÒ»¸ö½Úµã
+#pragma region Ğ™Ñ•Ñ–ÑĞ…ĞªÂµĞ³
+//Ğ™Ñ•Ñ–ÑĞ¢Â»Ñ‘Ñ†Ğ…ĞªÂµĞ³
 BOOL CPckControlCenter::DeleteEntry(LPCENTRY lpFileEntry)
 {
 	if ((NULL == m_lpClassPck) || (NULL == lpFileEntry))
@@ -286,7 +286,7 @@ BOOL CPckControlCenter::DeleteEntry(LPCENTRY lpFileEntry)
 	return TRUE;
 }
 
-//Ìá½»
+//ĞœĞ±Ğ…Â»
 BOOL CPckControlCenter::DeleteEntrySubmit()
 {
 	return RenameSubmit();
@@ -295,7 +295,7 @@ BOOL CPckControlCenter::DeleteEntrySubmit()
 #pragma endregion
 
 
-#pragma region °æ±¾Ïà¹Ø
+#pragma region ç‰ˆæœ¬ç›¸å…³
 
 BOOL CPckControlCenter::SetPckVersion(int verID)
 {
@@ -307,7 +307,7 @@ int	CPckControlCenter::GetPckVersion()
 	return m_lpClassPck->GetPckVersion()->id;
 }
 
-//»ñÈ¡µ±Ç°ÅäÖÃÃû³Æ
+//Â»ÑĞ˜ĞÂµÂ±Ğ—Â°Ğ•Ğ´Ğ¦Ğ“Ğ“Ñ‹Ñ–Ğ–
 LPCWSTR	CPckControlCenter::GetCurrentVersionName()
 {
 	if (NULL == m_lpClassPck)
@@ -333,7 +333,7 @@ int CPckControlCenter::AddVersionAlgorithmId(int AlgorithmId, int Version)
 
 #pragma endregion
 
-#pragma region ±¸·İµÄ»¹Ô­Êı¾İ
+#pragma region å¤‡ä»½çš„è¿˜åŸæ•°æ®
 #if 0
 void CPckControlCenter::CreateRestoreData()
 {

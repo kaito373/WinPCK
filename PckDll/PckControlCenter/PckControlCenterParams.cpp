@@ -1,11 +1,11 @@
-//////////////////////////////////////////////////////////////////////
-// PckControlCenterParams.cpp: ÓÃÓÚ½âÎöÍêÃÀÊÀ½ç¹«Ë¾µÄpckÎÄ¼şÖĞµÄÊı¾İ£¬²¢ÏÔÊ¾ÔÚListÖĞ
-// Í·ÎÄ¼ş,½çÃæÓëPCKÀàµÄÊı¾İ½»»¥£¬¿ØÖÆÖĞĞÄ
+ï»¿//////////////////////////////////////////////////////////////////////
+// PckControlCenterParams.cpp: Ğ£Ğ“Ğ£ĞªĞ…Ğ²ĞÑ†ĞĞºĞ“ĞĞšĞĞ…Ğ·â„–Â«Ğ›Ñ•ÂµĞ”pckĞĞ”Ñ˜ÑĞ¦Ğ ÂµĞ”ĞšÑÑ•Ğ­ĞˆÂ¬Ğ†ÑĞŸĞ¤ĞšÑ•Ğ¤ĞªListĞ¦Ğ 
+// ĞÂ·ĞĞ”Ñ˜Ñ,Ğ…Ğ·Ğ“Ğ¶Ğ£Ğ»PCKĞĞ°ÂµĞ”ĞšÑÑ•Ğ­Ğ…Â»Â»ÒĞˆÂ¬Ñ—Ğ¨Ğ¦Ğ–Ğ¦Ğ Ğ Ğ”
 //
-// ´Ë³ÌĞòÓÉ ÀîÇï·ã/stsm/liqf ±àĞ´£¬pck½á¹¹²Î¿¼ÈôË®µÄpck½á¹¹.txt£¬²¢
-// ²Î¿¼ÁËÆäÒ×ÓïÑÔ´úÂëÖĞ²¢ÓÚ¶ÁpckÎÄ¼şÁĞ±íµÄ²¿·Ö
+// Ò‘Ğ›Ñ–ĞœĞ Ñ‚Ğ£Ğ™ ĞĞ¾Ğ—Ğ¿Â·Ğ³/stsm/liqf Â±Ğ°Ğ Ò‘ĞˆÂ¬pckĞ…Ğ±â„–â„–Ğ†ĞÑ—Ñ˜Ğ˜Ñ„Ğ›Â®ÂµĞ”pckĞ…Ğ±â„–â„–.txtĞˆÂ¬Ğ†Ñ
+// Ğ†ĞÑ—Ñ˜Ğ‘Ğ›Ğ–Ğ´Ğ¢Ğ§Ğ£Ğ¿Ğ¡Ğ¤Ò‘ÑŠĞ’Ğ»Ğ¦Ğ Ğ†ÑĞ£ĞªÂ¶Ğ‘pckĞĞ”Ñ˜ÑĞ‘Ğ Â±Ğ½ÂµĞ”Ğ†Ñ—Â·Ğ¦
 //
-// ´Ë´úÂëÔ¤¼Æ½«»á¿ªÔ´£¬ÈÎºÎ»ùÓÚ´Ë´úÂëµÄĞŞ¸Ä·¢²¼Çë±£ÁôÔ­×÷ÕßĞÅÏ¢
+// Ò‘Ğ›Ò‘ÑŠĞ’Ğ»Ğ¤Â¤Ñ˜Ğ–Ğ…Â«Â»Ğ±Ñ—Ğ„Ğ¤Ò‘ĞˆÂ¬Ğ˜ĞÑ”ĞÂ»Ñ‰Ğ£ĞªÒ‘Ğ›Ò‘ÑŠĞ’Ğ»ÂµĞ”Ğ Ğ®Ñ‘Ğ”Â·ÑĞ†Ñ˜Ğ—Ğ»Â±ĞˆĞ‘Ñ„Ğ¤Â­Ğ§Ñ‡Ğ¥Ğ¯Ğ Ğ•ĞŸÑ
 // 
 // 2012.10.10
 //////////////////////////////////////////////////////////////////////
@@ -13,9 +13,9 @@
 #include "PckControlCenter.h"
 #include <thread>
 
-#pragma region Ïß³Ì¿ØÖÆ
+#pragma region ĞŸĞ¯Ñ–ĞœÑ—Ğ¨Ğ¦Ğ–
 
-//Ïß³ÌÔËĞĞ²ÎÊı
+//ĞŸĞ¯Ñ–ĞœĞ¤Ğ›Ğ Ğ Ğ†ĞĞšÑ
 BOOL CPckControlCenter::isThreadWorking()
 {
 	return cParams.cVarParams.bThreadRunning;
@@ -29,7 +29,7 @@ void CPckControlCenter::ForceBreakThreadWorking()
 #pragma endregion
 
 
-#pragma region Ïß³ÌÈÎÎñĞÅÏ¢
+#pragma region ĞŸĞ¯Ñ–ĞœĞ˜ĞĞÑĞ Ğ•ĞŸÑ
 //
 int CPckControlCenter::GetLastErrorMsg()
 {
@@ -43,14 +43,14 @@ BOOL CPckControlCenter::isLastOptSuccess()
 
 #pragma endregion
 
-#pragma region ÄÚ´æÕ¼ÓÃ
-//ÄÚ´æÕ¼ÓÃ
+#pragma region Ğ”ĞªÒ‘Ğ¶Ğ¥Ñ˜Ğ£Ğ“
+//Ğ”ĞªÒ‘Ğ¶Ğ¥Ñ˜Ğ£Ğ“
 DWORD CPckControlCenter::getMTMemoryUsed()
 {
 	return cParams.cVarParams.dwMTMemoryUsed;
 }
 
-//ÄÚ´æÖµ
+//Ğ”ĞªÒ‘Ğ¶Ğ¦Âµ
 void CPckControlCenter::setMTMaxMemory(DWORD dwMTMaxMemory)
 {
 	if ((0 < dwMTMaxMemory) && (getMaxMemoryAllowed() >= dwMTMaxMemory)) {
@@ -66,7 +66,7 @@ DWORD CPckControlCenter::getMTMaxMemory()
 	return cParams.dwMTMaxMemory;
 }
 
-//×î´óÄÚ´ægetDefaultMaxMemoryAllowed
+//Ğ§Ğ¾Ò‘ÑƒĞ”ĞªÒ‘Ğ¶getDefaultMaxMemoryAllowed
 DWORD CPckControlCenter::getMaxMemoryAllowed()
 {
 	return MT_MAX_MEMORY;
@@ -74,7 +74,7 @@ DWORD CPckControlCenter::getMaxMemoryAllowed()
 
 #pragma endregion
 
-#pragma region Ïß³ÌÊı
+#pragma region ĞŸĞ¯Ñ–ĞœĞšÑ
 
 
 DWORD CPckControlCenter::getMaxThread()
@@ -87,7 +87,7 @@ void CPckControlCenter::setMaxThread(DWORD dwThread)
 	cParams.dwMTThread = dwThread;
 }
 
-//Ïß³ÌÄ¬ÈÏ²ÎÊı
+//ĞŸĞ¯Ñ–ĞœĞ”Â¬Ğ˜ĞŸĞ†ĞĞšÑ
 DWORD CPckControlCenter::getMaxThreadUpperLimit()
 {
 	return (thread::hardware_concurrency() + ((thread::hardware_concurrency() + (thread::hardware_concurrency() & 1)) >> 1));
@@ -95,9 +95,9 @@ DWORD CPckControlCenter::getMaxThreadUpperLimit()
 
 #pragma endregion
 
-#pragma region Ñ¹ËõµÈ¼¶
+#pragma region å‹ç¼©ç­‰çº§
 
-//Ñ¹ËõµÈ¼¶
+//Ğ¡â„–Ğ›Ñ…ÂµĞ˜Ñ˜Â¶
 DWORD CPckControlCenter::getCompressLevel()
 {
 	return cParams.dwCompressLevel;
@@ -108,8 +108,8 @@ void CPckControlCenter::setCompressLevel(DWORD dwCompressLevel)
 	cParams.dwCompressLevel = dwCompressLevel;
 }
 
-//Ñ¹ËõµÈ¼¶Ä¬ÈÏ²ÎÊı
-//²ÎÊıÄ¬ÈÏÖµ
+//Ğ¡â„–Ğ›Ñ…ÂµĞ˜Ñ˜Â¶Ğ”Â¬Ğ˜ĞŸĞ†ĞĞšÑ
+//Ğ†ĞĞšÑĞ”Â¬Ğ˜ĞŸĞ¦Âµ
 DWORD CPckControlCenter::getDefaultCompressLevel()
 {
 	return Z_DEFAULT_COMPRESS_LEVEL;
@@ -123,7 +123,7 @@ DWORD CPckControlCenter::getMaxCompressLevel()
 #pragma endregion
 
 
-#pragma region ½ø¶ÈÏà¹Ø
+#pragma region è¿›åº¦ç›¸å…³
 
 DWORD CPckControlCenter::getUIProgress()
 {
@@ -147,7 +147,7 @@ DWORD CPckControlCenter::getUIProgressUpper()
 
 #pragma endregion
 
-#pragma region ´òÓ¡Ìí¼Ó/ĞÂÔöÎÄ¼ş½á¹û
+#pragma region Ò‘Ñ‚Ğ£ĞĞœĞ½Ñ˜Ğ£/Ğ Ğ’Ğ¤Ñ†ĞĞ”Ñ˜ÑĞ…Ğ±â„–Ñ‹
 
 DWORD CPckControlCenter::GetUpdateResult_OldFileCount()
 {

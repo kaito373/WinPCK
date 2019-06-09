@@ -1,11 +1,11 @@
-//////////////////////////////////////////////////////////////////////
-// PckControlCenter.cpp: ���ڽ����������繫˾��pck�ļ��е����ݣ�����ʾ��List��
-// ͷ�ļ�,������PCK������ݽ�������������
+﻿//////////////////////////////////////////////////////////////////////
+// PckControlCenter.cpp: УГУЪЅвОцНкГАКАЅз№«ЛѕµДpckОДјюЦРµДКэѕЭЈ¬ІўПФКѕФЪListЦР
+// Н·ОДјю,ЅзГжУлPCKАаµДКэѕЭЅ»»ҐЈ¬їШЦЖЦРРД
 //
-// �˳����� �����/stsm/liqf ��д��pck�ṹ�ο���ˮ��pck�ṹ.txt����
-// �ο����������Դ����в��ڶ�pck�ļ��б��Ĳ���
+// ґЛіМРтУЙ АоЗп·г/stsm/liqf ±аРґЈ¬pckЅб№№ІОїјИфЛ®µДpckЅб№№.txtЈ¬Іў
+// ІОїјБЛЖдТЧУпСФґъВлЦРІўУЪ¶БpckОДјюБР±нµДІї·Ц
 //
-// �˴���Ԥ�ƽ��ῪԴ���κλ��ڴ˴�����޸ķ����뱣��ԭ������Ϣ
+// ґЛґъВлФ¤јЖЅ«»бїЄФґЈ¬ИОєО»щУЪґЛґъВлµДРЮёД·ўІјЗл±ЈБфФ­ЧчХЯРЕПў
 // 
 // 2012.10.10
 //////////////////////////////////////////////////////////////////////
@@ -57,8 +57,8 @@ void CPckControlCenter::Reset(DWORD dwUIProgressUpper)
 	cParams.cVarParams.dwUIProgressUpper = dwUIProgressUpper;
 }
 
-#pragma region ��־��ع���
-//��־
+#pragma region 日志相关功能
+//ИХЦѕ
 void	CPckControlCenter::regShowFunc(ShowLogW _ShowLogW)
 {
 	CPckClassLog::PckClassLog_func_register(_ShowLogW);
