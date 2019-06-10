@@ -114,10 +114,10 @@ CPckClassVersionDetect::~CPckClassVersionDetect()
 
 const PCK_VERSION_ID CPckClassVersionDetect::cPckIDs[] = 
 {
-	{ PCK_VERSION_ZX,		TEXT("Jade Dynasty"),			PCK_V2020, AFPCK_VERSION_202, 0 },
-	{ PCK_VERSION_ZXNEW,	TEXT("Jade Dynasty(New)"),		PCK_V2030, AFPCK_VERSION_203, 0 },
-	{ PCK_VERSION_SDS,		TEXT("Perfect World"),			PCK_V2020, AFPCK_VERSION_202, 161 },
-	{ PCK_VERSION_SDSNEW,	TEXT("Perfect World(New)"),		PCK_V2030, AFPCK_VERSION_203, 161 },
+	{ PCK_VERSION_ZX,		TEXT("Perfect World"),			PCK_V2020, AFPCK_VERSION_202, 0 },
+	{ PCK_VERSION_ZXNEW,	TEXT("Perfect World(New)"),		PCK_V2030, AFPCK_VERSION_203, 0 },
+	{ PCK_VERSION_SDS,		TEXT("Saint Seiya"),			PCK_V2020, AFPCK_VERSION_202, 161 },
+	{ PCK_VERSION_SDSNEW,	TEXT("Saint Seiya(New)"),		PCK_V2030, AFPCK_VERSION_203, 161 },
 	{ PCK_VERSION_SM,		TEXT("Forsaken World"),			PCK_V2020, AFPCK_VERSION_202, 131 },
 	{ PCK_VERSION_SMNEW,	TEXT("Forsaken World(New)"),		PCK_V2030, AFPCK_VERSION_203, 131 },
 #ifndef _DEBUG
