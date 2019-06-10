@@ -104,13 +104,8 @@ VOID TInstDlg::UpdatePckFile(VOID *pParam)
 		if (0 != pck_getUpdateResult_PrepareToAddFileCount()) {
 
 			_stprintf_s(szPrintf,
-				TEXT("此更新过程数据如下：\r\n")
-				TEXT("PCK 包中原有文件数： %d\r\n")
-				TEXT("计划更新文件数： %d\r\n")
-				TEXT("实际更新文件数： %d\r\n")
-				TEXT("重名文件数： %d\r\n")
-				TEXT("未更新文件数： %d\r\n")
-				TEXT("更新后 PCK 包中文件数： %d"),
+				TEXT("Total files: %d\r\n")
+				TEXT("Added: %d"),
 				pck_getUpdateResult_OldFileCount(),
 				pck_getUpdateResult_PrepareToAddFileCount(),
 				pck_getUpdateResult_ChangedFileCount(),
@@ -118,7 +113,7 @@ VOID TInstDlg::UpdatePckFile(VOID *pParam)
 				pck_getUpdateResult_PrepareToAddFileCount() - pck_getUpdateResult_ChangedFileCount(),
 				pck_getUpdateResult_FinalFileCount());
 
-			pThis->MessageBox(szPrintf, TEXT("更新报告"), MB_OK | MB_ICONINFORMATION);
+			pThis->MessageBox(szPrintf, TEXT("Add Files"), MB_OK | MB_ICONINFORMATION);
 
 			//pThis->m_PckLog.PrintLogI(szPrintf);
 			log_Print(LOG_IMAGE_INFO, szPrintf);
