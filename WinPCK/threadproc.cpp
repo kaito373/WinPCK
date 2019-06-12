@@ -104,8 +104,8 @@ VOID TInstDlg::UpdatePckFile(VOID *pParam)
 		if (0 != pck_getUpdateResult_PrepareToAddFileCount()) {
 
 			_stprintf_s(szPrintf,
-				TEXT("Total files: %d\r\n")
-				TEXT("Added: %d"),
+				TEXT("Всего файлов: %d\r\n")
+				TEXT("Добавлено: %d"),
 				pck_getUpdateResult_OldFileCount(),
 				pck_getUpdateResult_PrepareToAddFileCount(),
 				pck_getUpdateResult_ChangedFileCount(),
@@ -113,7 +113,7 @@ VOID TInstDlg::UpdatePckFile(VOID *pParam)
 				pck_getUpdateResult_PrepareToAddFileCount() - pck_getUpdateResult_ChangedFileCount(),
 				pck_getUpdateResult_FinalFileCount());
 
-			pThis->MessageBox(szPrintf, TEXT("Add Files"), MB_OK | MB_ICONINFORMATION);
+			pThis->MessageBox(szPrintf, TEXT("Добавление файлов"), MB_OK | MB_ICONINFORMATION);
 
 			//pThis->m_PckLog.PrintLogI(szPrintf);
 			log_Print(LOG_IMAGE_INFO, szPrintf);
