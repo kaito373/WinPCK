@@ -68,7 +68,7 @@ BOOL TInstDlg::EvCreate(LPARAM lParam)
 	//GetWindowRect(&rect);
 	//int		xsize = rect.right - rect.left, ysize = rect.bottom - rect.top;
 
-	int		xsize = 1100, ysize = 800;
+	int		xsize = 1100, ysize = 600;
 
 	::SetClassLong(hWnd, GCL_HICON,
 		(LONG_PTR)::LoadIcon(TApp::GetInstance(), (LPCTSTR)IDI_ICON_APP));
